@@ -53,7 +53,7 @@ export default function Layout(props: { children: JSX.Element }) {
         </Toolbar>
       </AppBar>
       <Container className={classes.main}>{children}</Container>
-      <footer>
+      <footer className={classes.footer}>
         <Typography>Developed by ldiez</Typography>
       </footer>
     </div>
