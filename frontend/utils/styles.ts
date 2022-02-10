@@ -10,8 +10,8 @@ const useStyles = makeStyles ((theme: Theme) => ({
         },
     },
     title: {
-        fontSize: '1.3rem',
-        fontWeight: 700,
+        fontSize: '1.5rem',
+        fontWeight: "bold",
         color: "#F0F4Fb"
     },
     main: {
