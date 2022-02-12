@@ -3,10 +3,11 @@ import { IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import EnhancedTable from "./Table/EnhancedTable";
+import EnhancedTable from "./GenericTable/GenericTable";
 import { menues } from "../utils/table/FoodTableConstants";
 import { headCells } from "../utils/table/FoodTableConstants";
 import { Menu } from "../utils/interfaces";
+import useStyles from "../styles/styles";
 
 interface FoodTableProps {
   search: string;
@@ -14,15 +15,16 @@ interface FoodTableProps {
 
 export default function FoodTable(props: FoodTableProps) {
   const { search } = props;
+  const classes = useStyles();
 
   const [filter, setFilter] = React.useState("");
 
   const buttons = [
-    <IconButton key="b1" onClick={() => console.log("clic")}>
-      <EditIcon />
+    <IconButton color="primary" key="b1" onClick={() => console.log("clic")}>
+      <EditIcon className={classes.editIcon} />
     </IconButton>,
     <IconButton key="b2">
-      <DeleteIcon />
+      <DeleteIcon className={classes.deleteIcon} />
     </IconButton>,
   ];
 
