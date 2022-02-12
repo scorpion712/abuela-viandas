@@ -16,10 +16,11 @@ interface EnhancedTableProps {
   headCells: any[];
   rows: any[];
   buttons: any[];
+  handleFilter?: (e: any) => void;
 }
 
 export default function EnhancedTable(props: EnhancedTableProps) {
-  const { rows, headCells, buttons } = props;
+  const { rows, headCells, buttons, handleFilter } = props;
   const [order, setOrder] = React.useState<Order>('asc');
   const [orderBy, setOrderBy] = React.useState<keyof Menu>('price'); 
   const [page, setPage] = React.useState(0);
@@ -52,7 +53,7 @@ export default function EnhancedTable(props: EnhancedTableProps) {
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={0} />
+        <EnhancedTableToolbar handleFilter={handleFilter} />
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
