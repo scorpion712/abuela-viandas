@@ -43,6 +43,7 @@ export default function EnhancedTableBody(props: EnhancedTableBodyProps) : JSX.E
           >
             {row.name}
           </TableCell>
+          <TableCell align="left">{row.category}</TableCell>
           <TableCell align="right">{row.price}</TableCell>
           <TableCell align="left">{row.last_date}</TableCell>
           <TableCell align="right">

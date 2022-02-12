@@ -4,6 +4,7 @@ export interface Menu {
     last_date: string;
     name: string;
     id: string;
+    category: string;
     img: string;
 }
 

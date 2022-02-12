@@ -8,9 +8,10 @@ export default function FoodPage(): JSX.Element {
 
   const [search, setSearch] = React.useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setSearch(e.target.value.toLowerCase());
   }
+
 
   return (
     <Layout>
@@ -20,9 +21,9 @@ export default function FoodPage(): JSX.Element {
           fullWidth
           placeholder='Buscar Menu...'
           value={search}
-          onChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => handleChange(e)}
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => handleSearchChange(e)}
         />
-        <FoodTable search={search}/>
+        <FoodTable search={search} />
       </div>
     </Layout>
   );
