@@ -1,11 +1,11 @@
 import { Theme } from "@mui/material";
-import { amber, green, indigo, orange, red } from "@mui/material/colors";
+import { amber, green, indigo, orange, purple, red } from "@mui/material/colors";
 import { makeStyles } from "@mui/styles"; 
 
 const useStyles = makeStyles ((theme: Theme) => ({
     // layout
     navbar: {
-        backgroundColor: green[900],
+        backgroundColor: green[400],
         '& a': {
             color: green[300],
             marginLeft: '2rem',
@@ -24,11 +24,11 @@ const useStyles = makeStyles ((theme: Theme) => ({
     },
     // table
     tableToolBar: {
-        backgroundColor: green[800],
+        backgroundColor: green[300],
         color: "#FFF"
     }, 
     tableFoot: { 
-        backgroundColor: green[600],
+        backgroundColor: green[200],
         fontSize: '1rem',
         // inherits
         '& p':{
@@ -40,7 +40,7 @@ const useStyles = makeStyles ((theme: Theme) => ({
     },
     // icons
     filterIcon: {
-        color: amber[600],
+        color: "#c6ff00",
     },
     editIcon: {
         color: indigo[400],
