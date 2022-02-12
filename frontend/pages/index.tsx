@@ -7,7 +7,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
-import FoodTable from '../components/Table/EnhancedTable';
+import FoodTable from '../components/GenericTable/GenericTable';
 import FoodPage from './FoodPage';
 
 const Home: NextPage = () => {

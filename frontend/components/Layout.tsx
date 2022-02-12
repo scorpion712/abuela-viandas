@@ -14,7 +14,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import NextLink from 'next/link';
 
 import { appTitle } from '../utils/constants';
-import useStyles from '../utils/styles';
+import useStyles from '../styles/styles';
 
 export default function Layout(props: { children: JSX.Element }) {
   const classes = useStyles();
@@ -23,6 +23,8 @@ export default function Layout(props: { children: JSX.Element }) {
     <div>
       <Head>
         <title>{appTitle}</title>
+        <meta name="viewport" content='minimum=scale=1, initial-scale=1, width=device-width' />
+        <link rel="stylesheet" href='https://fonts.google.com/css?family=Roboto:300,400,500,700&display=swap' />
       </Head>
       <AppBar position="static" className={classes.navbar}>
         <Toolbar>

@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import { blue } from "@mui/material/colors";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { Grid, Tooltip } from "@mui/material";
+import useStyles from "../styles/styles";
 
 const emails = ["Light", "Normal", "Vegano", "Limpiar"];
 const filterDialogTitle = "Seleccione un filtro"; 
@@ -63,6 +64,7 @@ export default function FoodTableFilter(props: {
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState("");
   const { handleFilter } = props;
+  const classes = useStyles();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -80,7 +82,7 @@ export default function FoodTableFilter(props: {
         <Grid item xs={11}>
           {selectedValue.length > 0 && (
             <Typography variant="subtitle1" component="text" 
-            style={{borderRadius: "1rem", padding: '.5rem', fontSize: '1.1rem', backgroundColor:"#F49839", color: "#FAFAFA"}}>
+            style={{borderRadius: "1rem", padding: '.5rem', paddingLeft: '1rem', paddingRight: '1rem', fontSize: '1.1rem', fontWeight:"500", backgroundColor:"#F49839", color: "#FAFAFA"}}>
                 {selectedValue}
             </Typography>
           )}
@@ -88,7 +90,7 @@ export default function FoodTableFilter(props: {
         <Grid item xs={1}>
           <div>
             <IconButton onClick={handleClickOpen}>
-              <FilterListIcon />
+              <FilterListIcon className={classes.filterIcon} />
             </IconButton>
             <SimpleDialog
               selectedValue={selectedValue}

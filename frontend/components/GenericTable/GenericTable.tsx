@@ -5,11 +5,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 import Paper from '@mui/material/Paper'; 
 
-import EnhancedTableToolbar from './EnhancedTableToolbar';
+import EnhancedTableToolbar from './GenericTableToolbar';
 import { Menu } from '../../utils/interfaces';
-import EnhancedTableHead from './EnhancedTableHead';
-import EnhancedTableBody from './EnhancedTableBody';
+import EnhancedTableHead from './GenericTableHead';
+import EnhancedTableBody from './GenericTableBody';
 import { Order } from '../../utils/Comparator';
+import useStyles from '../../styles/styles';
 
 
 interface EnhancedTableProps {
@@ -25,6 +26,7 @@ export default function EnhancedTable(props: EnhancedTableProps) {
   const [orderBy, setOrderBy] = React.useState<keyof Menu>('price'); 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const classes = useStyles();
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
@@ -77,6 +79,7 @@ export default function EnhancedTable(props: EnhancedTableProps) {
           </Table>
         </TableContainer>
         <TablePagination
+          className={classes.tableFoot}
           rowsPerPageOptions={[5, 10, 25, 50]}
           component="div"
           count={rows.length}
