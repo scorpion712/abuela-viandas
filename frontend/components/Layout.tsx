@@ -64,7 +64,7 @@ export default function Layout(props: { children: JSX.Element }) {
           </Box>
         </Toolbar>
       </AppBar>
-      <Container className={classes.main}>{children}</Container>
+      {children}
       <footer className={classes.footer}>
         <Typography>Copyrights</Typography>
       </footer>

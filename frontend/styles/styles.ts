@@ -47,6 +47,15 @@ const useStyles = makeStyles ((theme: Theme) => ({
     },
     deleteIcon: {
         color: red[400],
+    },
+    gridWeekDay: { 
+        border: 'solid', 
+        borderColor: '#000', 
+        display: 'flex',
+        alignContent: 'center',
+        alignItems: 'center', 
+        padding: '1rem', 
+        justifyContent: 'center'
     }
 }));
 
