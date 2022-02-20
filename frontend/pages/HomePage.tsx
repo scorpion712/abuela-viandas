@@ -1,6 +1,6 @@
 import { Container, Grid, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import React from 'react'
+import React from 'react' 
 import Layout from '../components/Layout'
 import useStyles from '../styles/styles';
 
@@ -29,8 +29,9 @@ export default function HomePage() {
             <Grid item xs={2} className={classes.gridWeekDay}>
                 Sabado 19
             </Grid>
-        </Grid>   
+        </Grid>  
           </div>
+          
       </Layout>
   )
 }
