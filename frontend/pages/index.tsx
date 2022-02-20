@@ -7,8 +7,8 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
-import FoodTable from '../components/GenericTable/GenericTable';
-import FoodPage from './FoodPage';
+import FoodTable from '../components/GenericTable/GenericTable'; 
+import HomePage from './HomePage'; 
 
 const Home: NextPage = () => {
   return (
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
     //     <FoodTable />
     //   </div>
     // </Layout>
-    <FoodPage></FoodPage>
+    <HomePage/> 
   );
 };
 
