@@ -5,22 +5,22 @@ import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 import Paper from '@mui/material/Paper'; 
 
-import EnhancedTableToolbar from './GenericTableToolbar';
+import GenericTableToolbar from './GenericTableToolbar';
 import { Menu } from '../../utils/interfaces';
-import EnhancedTableHead from './GenericTableHead';
-import EnhancedTableBody from './GenericTableBody';
+import GenericTableHead from './GenericTableHead';
+import GenericTableBody from './GenericTableBody';
 import { Order } from '../../utils/Comparator';
 import useStyles from '../../styles/styles';
 
 
-interface EnhancedTableProps {
+interface GenericTableProps {
   headCells: any[];
   rows: any[];
   buttons: any[];
   handleFilter?: (e: any) => void;
 }
 
-export default function EnhancedTable(props: EnhancedTableProps) {
+export default function GenericTable(props: GenericTableProps) {
   const { rows, headCells, buttons, handleFilter } = props;
   const [order, setOrder] = React.useState<Order>('asc');
   const [orderBy, setOrderBy] = React.useState<keyof Menu>('price'); 
@@ -55,20 +55,21 @@ export default function EnhancedTable(props: EnhancedTableProps) {
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar handleFilter={handleFilter} />
-        <TableContainer>
+        <GenericTableToolbar handleFilter={handleFilter} />
+        <TableContainer
+          style={{paddingLeft: "1.5rem"}}>
           <Table
-            sx={{ minWidth: 750 }}
+             
             aria-labelledby="tableTitle"
             size="medium"
           >
-            <EnhancedTableHead 
+            <GenericTableHead 
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
               headCells={headCells} numSelected={0} onSelectAllClick={() => {/*do nothing */}}/>
-            <EnhancedTableBody 
+            <GenericTableBody 
               page={page} 
               rows={rows} 
               emptyRows={emptyRows} 

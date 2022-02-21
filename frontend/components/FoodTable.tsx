@@ -3,7 +3,7 @@ import { IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import EnhancedTable from "./GenericTable/GenericTable";
+import GenericTable from "./GenericTable/GenericTable";
 import { menues } from "../utils/table/FoodTableConstants";
 import { headCells } from "../utils/table/FoodTableConstants";
 import { Menu } from "../utils/interfaces";
@@ -38,7 +38,7 @@ export default function FoodTable(props: FoodTableProps) {
   );
 
   return (
-    <EnhancedTable
+    <GenericTable
       rows={foodRows}
       headCells={headCells}
       buttons={buttons}

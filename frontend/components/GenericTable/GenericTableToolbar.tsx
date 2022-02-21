@@ -4,11 +4,11 @@ import useStyles from '../../styles/styles';
 import { tableTitle } from '../../utils/constants';
 import FoodTableFilter from '../FoodTableFilter';
 
-interface EnhancedTableToolbarProps {
+interface GenericTableToolbarProps {
   handleFilter?: (e: any) => void;
 }
 
-const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => { 
+const GenericTableToolbar = (props: GenericTableToolbarProps) => { 
   const classes = useStyles();
   const {handleFilter} = props;
 
@@ -33,4 +33,4 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
   );
 };
 
-export default EnhancedTableToolbar;
+export default GenericTableToolbar;

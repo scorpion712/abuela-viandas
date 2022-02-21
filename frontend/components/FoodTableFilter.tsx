@@ -79,7 +79,7 @@ export default function FoodTableFilter(props: {
   return (
     <Tooltip title="Filter list">
       <Grid container spacing={3}>
-        <Grid item xs={11}>
+        <Grid item xs={10}>
           {selectedValue.length > 0 && (
             <Typography variant="subtitle1" component="text" 
             style={{borderRadius: "1rem", padding: '.5rem', paddingLeft: '1rem', paddingRight: '1rem', fontSize: '1.1rem', fontWeight:"500", backgroundColor:"#F49839", color: "#FAFAFA"}}>
@@ -89,7 +89,8 @@ export default function FoodTableFilter(props: {
         </Grid>
         <Grid item xs={1}>
           <div>
-            <IconButton onClick={handleClickOpen}>
+            <IconButton
+             onClick={handleClickOpen}>
               <FilterListIcon className={classes.filterIcon} />
             </IconButton>
             <SimpleDialog
