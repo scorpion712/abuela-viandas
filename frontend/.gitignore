@@ -7,7 +7,7 @@
 /utils/data.ts
 # testing
 /coverage
-
+/routes
 # next.js
 /.next/
 /out/

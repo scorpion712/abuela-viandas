@@ -1,5 +1,4 @@
 import { Container, Grid, Typography } from '@mui/material'
-import { Box } from '@mui/system'
 import React from 'react' 
 import Layout from '../components/Layout'
 import useStyles from '../styles/styles';
@@ -11,6 +10,7 @@ export default function HomePage() {
     //   <Layout>  
     //       <div  style={{marginLeft:"3rem", marginRight: '3rem'}}>
 
+ 
     //     <Grid direction="row" container> 
     //         <Grid item xs={2} className={classes.gridWeekDay}>
     //             Lunes 14
@@ -34,6 +34,6 @@ export default function HomePage() {
     //       </div>
           
     //   </Layout>
-    <FoodPage />
+    <FoodPage /> 
   )
 }
