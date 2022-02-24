@@ -1,5 +1,4 @@
 import { Container, Grid, Typography } from '@mui/material'
-import { Box } from '@mui/system'
 import React from 'react' 
 import Layout from '../components/Layout'
 import useStyles from '../styles/styles';
@@ -31,7 +30,6 @@ export default function HomePage() {
             </Grid>
         </Grid>  
           </div>
-          
       </Layout>
   )
 }
