@@ -6,12 +6,13 @@ import {
   TableSortLabel,
 } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
+import useStyles from '../../styles/styles';
 
 import { Menu, MenuHeadCell } from '../../utils/interfaces';
 
 type Order = 'asc' | 'desc';
 
-interface EnhancedTableProps {
+interface GenericTableHeadProps {
   numSelected: number;
   onRequestSort: (
     event: React.MouseEvent<unknown>,
@@ -24,18 +25,20 @@ interface EnhancedTableProps {
   headCells: MenuHeadCell[];
 }
 
-function EnhancedTableHead(props: EnhancedTableProps) {
+function GenericTableHead(props: GenericTableHeadProps
+) {
   const { order, orderBy, onRequestSort, headCells } = props;
   const createSortHandler =
     (property: keyof Menu) => (event: React.MouseEvent<unknown>) => {
       onRequestSort(event, property);
     };
-
+  const classes = useStyles();
   return (
     <TableHead>
       <TableRow>
         {headCells.map((headCell) => (
           <TableCell
+            className={classes.tableHead}
             key={headCell.id}
             align={headCell.numeric ? 'right' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
@@ -60,4 +63,4 @@ function EnhancedTableHead(props: EnhancedTableProps) {
   );
 }
 
-export default EnhancedTableHead;
+export default GenericTableHead;

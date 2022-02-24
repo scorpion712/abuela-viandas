@@ -3,8 +3,9 @@ import { TableBody, TableCell, TableRow } from '@mui/material';
 import { getComparator, Order } from '../../utils/Comparator';
 import { stableSort } from '../../utils/sorter';
 import { Menu } from '../../utils/interfaces';
+import useStyles from '../../styles/styles';
  
-interface EnhancedTableBodyProps {
+interface GenericTableBodyProps {
     page: number,
     rows: any[],
     rowsPerPage: number,
@@ -14,10 +15,10 @@ interface EnhancedTableBodyProps {
     buttons?: JSX.Element []
 };
 
-export default function EnhancedTableBody(props: EnhancedTableBodyProps) : JSX.Element {
-    
+export default function GenericTableBody(props: GenericTableBodyProps) : JSX.Element {
+  
+  const classes = useStyles();
     const {rows, emptyRows, rowsPerPage, order, orderBy, page, buttons} = props;
-
   return (
 
   <TableBody>
@@ -36,6 +37,7 @@ export default function EnhancedTableBody(props: EnhancedTableBodyProps) : JSX.E
           key={row.name} 
         >
           <TableCell
+          className={classes.tableBody}
             component="th"
             id={labelId}
             scope="row"
@@ -43,10 +45,10 @@ export default function EnhancedTableBody(props: EnhancedTableBodyProps) : JSX.E
           >
             {row.name}
           </TableCell>
-          <TableCell align="left">{row.category}</TableCell>
-          <TableCell align="right">{row.price}</TableCell>
-          <TableCell align="left">{row.last_date}</TableCell>
-          <TableCell align="right">
+          <TableCell className={classes.tableBody} align="left">{row.category}</TableCell>
+          <TableCell className={classes.tableBody} align="right">{row.price}</TableCell>
+          <TableCell className={classes.tableBody} align="left">{row.last_date}</TableCell>
+          <TableCell className={classes.tableBody} align="right">
             {
                 buttons
             }

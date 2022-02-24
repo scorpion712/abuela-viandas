@@ -23,7 +23,18 @@ const useStyles = makeStyles ((theme: Theme) => ({
     footer: {
         textAlign: 'center'
     },
+    // searcher
+    searchText:{
+        marginTop: '.5rem',
+        marginBottom: '.5rem',
+        '& fieldset': {
+            borderColor: "#F00"
+        }
+    },
     // table
+    toolTipFilter:{
+        padding:0,
+    },
     tableToolBar: {
         backgroundColor: green[300],
         color: "#FFF"
@@ -39,15 +50,26 @@ const useStyles = makeStyles ((theme: Theme) => ({
             fontSize: '1rem',
         }
     },
+    tableHead:{
+        fontSize: '1.3rem',
+        fontWeight:'900',
+    },
+    tableBody:{
+        fontSize: '1.2rem', 
+    },
     // icons
     filterIcon: {
         color: "#c6ff00",
     },
+    
     editIcon: {
         color: indigo[400],
     },
+    genericTable:{
+        marginLeft: "1.6rem"
+    },
     deleteIcon: {
-        color: red[400],
+        color: red[400]
     },
     gridWeekDay: { 
         border: 'solid', 

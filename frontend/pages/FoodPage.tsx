@@ -1,4 +1,5 @@
 import { Container, TextField } from '@mui/material';
+import { red } from '@mui/material/colors';
 import React from 'react';
 import FoodTable from '../components/FoodTable';
 
@@ -19,7 +20,8 @@ export default function FoodPage(): JSX.Element {
     <Layout>
       <Container className={classes.main}>
         <TextField
-          style={{ margin: '1rem 0 .5rem 0' }}
+          className={classes.searchText}
+          
           fullWidth
           placeholder='Buscar Menu...'
           value={search}
