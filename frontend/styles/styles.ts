@@ -116,6 +116,29 @@ const useStyles = makeStyles ((theme: Theme) => ({
     deleteCircleIcon: {
         color: red[900],
     },
+    // carousel
+    slide: { 
+        padding: 0,
+        margin: 0,
+        cursor: 'pointer',
+        transform: 'scale(1,0.8)',
+        transition: 'transform 300ms',
+        opacity: '0.5',
+        alignContent: "center",
+        alignSelf: "center",
+        alignItems: "center",
+        textAlign: "center",
+        display: "grid",
+        marginTop: '1rem',  
+    },
+    activeSlide: { 
+        alignContent: "center",
+        alignSelf: "center",
+        alignItems: "center",
+        display: "grid",
+        transform: 'scale(1.3,1)',
+        opacity: 1
+    },
     // week day
     weekDay: { 
         alignContent: "center",
