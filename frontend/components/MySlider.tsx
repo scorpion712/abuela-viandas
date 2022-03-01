@@ -29,7 +29,7 @@ export default function MySlider(props: MySliderProps) {
     speed: 300,
     slidesToShow: 3,
     centerMode: true,
-    beforeChange: (current:any, next: any) => handleChange(current, next),
+    beforeChange: (current:Number, next: Number) => handleChange(current, next),
   };
 
 
@@ -49,6 +49,8 @@ export default function MySlider(props: MySliderProps) {
           >
             {/* <img width="100%" height="100%" src={img} alt={img} /> */}
             <Typography 
+                id={idx.toString()}
+                onClick={(e : any) =>  handleChange(imageIndex, Number(e.target.id))}
                 style={{
                     paddingTop: "3rem",
                     paddingBottom: "3rem",
@@ -59,7 +61,7 @@ export default function MySlider(props: MySliderProps) {
                     fontSize: "2rem",
                     borderRadius: '7px',
              }}>
-              {img}{" "}
+              {img}
             </Typography>
           </div>
         ))}
