@@ -1,28 +1,31 @@
-import { Box, Card, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Card, Container, Grid, Typography } from "@mui/material";
+import Image from "next/image";
 import React from "react";
+
+import GenericDialog from "../components/dialogs/generic/GenericDialog";
 import FoodItemCard from "../components/FoodItemCard";
 import Layout from "../components/Layout";
-import MyCarousel from "../components/MyCarousel";
 import MySlider from "../components/MySlider";
 import useStyles from "../styles/styles";
+import ItemViewContent from "../components/ItemViewContent";
+import { Food } from "../utils/interfaces";
+import ItemViewActions from "../components/ItemViewActions";
 
-interface Food {
-  id: string;
-  mainImage: string;
-  name: string;
-  description: string;
-  longDescriptionTitle?: string;
-  longDescription?: string;
-  price: number;
-  dayOfWeek: Date;
-}
 
 interface MenuItem {
   menuType: string;
   foodItem: Food[];
 }
 
-const daysOfWeek = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+const daysOfWeek = [
+  "Lunes",
+  "Martes",
+  "Miércoles",
+  "Jueves",
+  "Viernes",
+  "Sábado",
+  "Domingo",
+];
 
 const menuItems: MenuItem[] = [
   {
@@ -268,9 +271,21 @@ export default function MainPage() {
   const classes = useStyles();
 
   const [imageIndex, setImageIndex] = React.useState(0);
+  const [openView, setOpenView] = React.useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = React.useState<Food>();
 
+  // change menu items
   const handleChange = (current: any, next: any) => {
     setImageIndex(next);
+  };
+
+  const handleCloseView = () => {
+    setOpenView(false);
+  };
+
+  const handleOpenView = (item: Food) => {
+    setOpenView(true);
+    setSelectedItem(item);
   };
 
   return (
@@ -287,15 +302,28 @@ export default function MainPage() {
                   <Grid item md={6} lg={2} key={foodItem.id}>
                     <Box className={classes.weekDay}>
                       <Typography className={classes.weekDayTitle}>
-                        {daysOfWeek[foodItem.dayOfWeek.getDay()] + ' ' + foodItem.dayOfWeek.getDate()}
+                        {daysOfWeek[foodItem.dayOfWeek.getDay()] +
+                          " " +
+                          foodItem.dayOfWeek.getDate()}
                       </Typography>
                     </Box>
-                    <FoodItemCard item={foodItem} />
+                    <FoodItemCard
+                      item={foodItem}
+                      handleCardClick={() => handleOpenView(foodItem)}
+                    />
                   </Grid>
                 )
             )}
           </Grid>
         </Grid>
+        <GenericDialog
+          open={openView}
+          handleClose={handleCloseView}
+          modalTitle={selectedItem?.name}
+          dialogActions={<ItemViewActions/>}
+        >
+          <ItemViewContent selectedItem={selectedItem} />
+        </GenericDialog>
       </>
     </Layout>
   );

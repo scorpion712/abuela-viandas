@@ -21,7 +21,9 @@ const useStyles = makeStyles ((theme: Theme) => ({
         minHeight: '80vh'
     }, 
     footer: {
-        textAlign: 'center'
+        textAlign: 'center',
+        backgroundColor: green[300],
+        color: "#F0F4Fb"
     },
     // searcher
     searchText:{
@@ -155,6 +157,7 @@ const useStyles = makeStyles ((theme: Theme) => ({
     // cards
     qtyInput: { 
         minWidth: '4.7rem',
+        marginTop: '.7rem',
         '& input': {
             paddingTop: '1rem',
             paddingBottom: '.6rem',
@@ -164,6 +167,7 @@ const useStyles = makeStyles ((theme: Theme) => ({
             textAlign: 'end',
             letterSpacing: '1px',
             width: '150px',
+            cursor: 'pointer'
         },
     },
     cardTitle: {

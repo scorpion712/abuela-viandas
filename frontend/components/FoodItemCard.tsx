@@ -7,7 +7,6 @@ import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse'; 
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography'; 
-import FavoriteIcon from '@mui/icons-material/Favorite'; 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'; 
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { TextField } from '@mui/material';
@@ -40,12 +39,12 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 interface FoodItemCardProps {
-  item : Food
+  item : Food,
+  handleCardClick: (item: Food) => void
 }
 
 export default function FoodItemCard(props: FoodItemCardProps) {
-  const { item } = props; 
-console.log(item);
+  const { item, handleCardClick } = props;  
   const [expanded, setExpanded] = React.useState(false);
   const [productQty, setQuantity] = React.useState<Number>(1);
 
@@ -62,23 +61,23 @@ console.log(item);
     } else {
       setQuantity(value < 1 ? 1 : 999);
     }
-  }
+  } 
 
-  const openProductDialog = () => {
-    console.log('open product detail dialog');
+  const handleAddToCart = (item: Food, productQty: Number) => {
+    console.log({...item, "productQty": productQty});
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }} > 
+    <Card sx={{ maxWidth: 345 }} style={{cursor: 'pointer'}}> 
       <CardMedia
         component="img"
         height="194"
         image={item.mainImage}
         alt="Image Not Found"
-        onClick={openProductDialog}
+        onClick={() => handleCardClick(item)}
       />
       <CardContent 
-        onClick={openProductDialog}>
+        onClick={() => handleCardClick(item)}>
         <Typography gutterBottom variant="h5" component="div" className={classes.cardTitle}>
           {item.name}
         </Typography>
@@ -101,7 +100,7 @@ console.log(item);
           className={classes.qtyInput}
           variant="outlined"
         />
-        <IconButton aria-label="add to cart">
+        <IconButton aria-label="add to cart" onClick={() => handleAddToCart(item, productQty)}>
           <AddShoppingCartIcon color='success'/>
         </IconButton>
         <Typography gutterBottom className={classes.cardProductPrice}>${item.price}</Typography>
