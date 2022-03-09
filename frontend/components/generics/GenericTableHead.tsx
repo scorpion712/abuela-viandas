@@ -8,7 +8,7 @@ import {
 import { visuallyHidden } from '@mui/utils';
 import useStyles from '../../styles/styles';
 
-import { Menu, MenuHeadCell } from '../../utils/interfaces';
+import { Menu, HeadCell } from '../../utils/interfaces';
 
 type Order = 'asc' | 'desc';
 
@@ -16,20 +16,19 @@ interface GenericTableHeadProps {
   numSelected: number;
   onRequestSort: (
     event: React.MouseEvent<unknown>,
-    property: keyof Menu
+    property: string
   ) => void;
   onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
   order: Order;
-  orderBy: string;
-  rowCount: number;
-  headCells: MenuHeadCell[];
+  orderBy: string; 
+  headCells: HeadCell[];
 }
 
 function GenericTableHead(props: GenericTableHeadProps
 ) {
   const { order, orderBy, onRequestSort, headCells } = props;
   const createSortHandler =
-    (property: keyof Menu) => (event: React.MouseEvent<unknown>) => {
+    (property: string) => (event: React.MouseEvent<unknown>) => {
       onRequestSort(event, property);
     };
   const classes = useStyles();

@@ -1,16 +1,16 @@
 import { alpha, IconButton, Toolbar, Tooltip, Typography } from '@mui/material'; 
 import useStyles from '../../styles/styles';
 
-import { tableTitle } from '../../utils/constants';
-import FoodTableFilter from '../FoodTableFilter';
+import FoodTableFilter from '../food/FoodTableFilter';
 
 interface GenericTableToolbarProps {
   handleFilter?: (e: any) => void;
+  tableTitle: string
 }
 
 const GenericTableToolbar = (props: GenericTableToolbarProps) => { 
   const classes = useStyles();
-  const {handleFilter} = props;
+  const { handleFilter, tableTitle } = props;
 
   return (
     <Toolbar

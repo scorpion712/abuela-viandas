@@ -7,15 +7,14 @@ export interface Menu {
     category: string;
     img: string;
 }
-
-
-export interface MenuHeadCell {
+  
+export interface HeadCell {
+    id: string;
     disablePadding: boolean;
-    id: keyof Menu;
     label: string;
     numeric: boolean;
   }
-  
+
 export interface Food {
     id: string;
     mainImage: string;
@@ -27,3 +26,24 @@ export interface Food {
     dayOfWeek: Date;
   }
   
+export interface Customer {
+    id: string,
+    email: string,
+    name: string
+}
+
+export interface OrderLine {
+    id: string, 
+    itemQty: number,
+    item: Menu
+    itemUnitPrice: number,
+    subTotal: number
+}
+
+export interface Order{
+    id: string;
+    total: number;
+    customer: string;
+    date: Date;
+    deliveryDate: Date;
+}

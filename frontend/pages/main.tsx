@@ -2,14 +2,14 @@ import { Box, Button, Card, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 
-import GenericDialog from "../components/dialogs/generic/GenericDialog";
-import FoodItemCard from "../components/FoodItemCard";
+import GenericDialog from "../components/generics/GenericDialog";
+import FoodItemCard from "../components/food/FoodItemCard";
 import Layout from "../components/Layout";
-import MySlider from "../components/MySlider";
-import useStyles from "../styles/styles";
+import MySlider from "../components/MySlider"; 
 import ItemViewContent from "../components/ItemViewContent";
 import { Food } from "../utils/interfaces";
 import ItemViewActions from "../components/ItemViewActions";
+import useStyles from "../styles/styles";
 
 
 interface MenuItem {
@@ -266,8 +266,7 @@ const menuItems: MenuItem[] = [
     ],
   },
 ];
-
-export default function MainPage() {
+export default function Main() {
   const classes = useStyles();
 
   const [imageIndex, setImageIndex] = React.useState(0);
@@ -326,5 +325,5 @@ export default function MainPage() {
         </GenericDialog>
       </>
     </Layout>
-  );
+  ); 
 }

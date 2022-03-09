@@ -11,8 +11,6 @@
 # next.js
 /.next/
 /out/
-/components/OrdersTable.tsx
-/pages/kitchen.tsx
 
 # production
 /build

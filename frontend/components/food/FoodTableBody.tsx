@@ -1,34 +1,33 @@
 import React from 'react';
-import { TableBody, TableCell, TableRow } from '@mui/material';
-import { getComparator, Order } from '../../utils/Comparator';
+import { TableBody, TableCell, TableRow } from '@mui/material'; 
+
 import { stableSort } from '../../utils/sorter';
-import { Menu } from '../../utils/interfaces';
+import { getComparator, OrderType } from '../../utils/Comparator';
 import useStyles from '../../styles/styles';
+import { Menu } from '../../utils/interfaces';
  
-interface GenericTableBodyProps {
+interface FoodTableBodyProps {
     page: number,
     rows: any[],
     rowsPerPage: number,
     emptyRows: number,
-    order: Order,
-    orderBy: keyof Menu,
+    order: OrderType,
+    orderBy: string,
     buttons?: JSX.Element []
 };
 
-export default function GenericTableBody(props: GenericTableBodyProps) : JSX.Element {
+export default function FoodTableBody(props: FoodTableBodyProps) : JSX.Element {
   
   const classes = useStyles();
     const {rows, emptyRows, rowsPerPage, order, orderBy, page, buttons} = props;
-  return (
-
-  <TableBody>
+    return (
+      <TableBody>
   {/* if you don't need to support IE11, you can replace the `stableSort` call with:
   rows.slice().sort(getComparator(order, orderBy)) */}
   {stableSort(rows, getComparator(order, orderBy))
     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
     .map((row, index) => {
-      const labelId = `enhanced-table-checkbox-${index}`;
-
+      const labelId = `enhanced-table-checkbox-${index}`; 
       return (
         <TableRow
           hover 
