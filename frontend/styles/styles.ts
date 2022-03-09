@@ -23,7 +23,9 @@ const useStyles = makeStyles ((theme: Theme) => ({
     footer: {
         textAlign: 'center',
         backgroundColor: green[300],
-        color: "#F0F4Fb"
+        color: "#F0F4Fb",
+        minWidth: '100%',
+        height: '123px'
     },
     // searcher
     searchText:{
@@ -188,6 +190,11 @@ const useStyles = makeStyles ((theme: Theme) => ({
         fontFamily:"Roboto",
         fontSize: "1.2rem",
         fontWeight: "bold",
+    },
+    // login
+    loginForm: { 
+        maxWidth: '800px',
+        margin: '0 auto',
     }
 }));
 
