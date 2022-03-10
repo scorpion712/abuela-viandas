@@ -74,7 +74,9 @@ export default function OrderTable(props: OrderTableProps) {
   return (
     <Box sx={{ width: "100%" }}>
       <Paper sx={{ width: "100%", mb: 2 }}>
-        <GenericTableToolbar handleFilter={handleFilter} tableTitle={orderTableTitle} />
+        <GenericTableToolbar tableTitle={orderTableTitle}>
+            <div>ACA VA FILTRO DATE PICKER</div>
+        </GenericTableToolbar> 
         <TableContainer style={{ paddingLeft: "1.5rem" }}>
           <Table aria-labelledby="tableTitle" size="medium">
             <GenericTableHead

@@ -4,13 +4,13 @@ import useStyles from '../../styles/styles';
 import FoodTableFilter from '../food/FoodTableFilter';
 
 interface GenericTableToolbarProps {
-  handleFilter?: (e: any) => void;
+  children?: JSX.Element;
   tableTitle: string
 }
 
 const GenericTableToolbar = (props: GenericTableToolbarProps) => { 
   const classes = useStyles();
-  const { handleFilter, tableTitle } = props;
+  const { children, tableTitle } = props;
 
   return (
     <Toolbar
@@ -28,7 +28,7 @@ const GenericTableToolbar = (props: GenericTableToolbarProps) => {
       >
         {tableTitle}
       </Typography> 
-      <FoodTableFilter handleFilter={handleFilter} />
+      {children}
     </Toolbar>
   );
 };

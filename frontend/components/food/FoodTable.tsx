@@ -17,6 +17,7 @@ import FoodTableBody from "./FoodTableBody";
 import { menues } from "../../utils/table/FoodTableConstants";
 import { headCells } from "../../utils/table/FoodTableConstants";
 import { foodTableTitle } from "../../utils/constants";
+import FoodTableFilter from "./FoodTableFilter";
 
 interface FoodTableProps {
   search: string;
@@ -78,7 +79,9 @@ export default function FoodTable(props: FoodTableProps) {
   return (
     <Box sx={{ width: "100%" }}>
       <Paper sx={{ width: "100%", mb: 2 }}>
-        <GenericTableToolbar handleFilter={handleFilter}  tableTitle={foodTableTitle} />
+        <GenericTableToolbar tableTitle={foodTableTitle}>
+          <FoodTableFilter handleFilter={handleFilter} />
+          </GenericTableToolbar>
         <TableContainer style={{ paddingLeft: "1.5rem" }}>
           <Table aria-labelledby="tableTitle" size="medium">
             <GenericTableHead
