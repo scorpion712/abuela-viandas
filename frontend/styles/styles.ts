@@ -25,7 +25,7 @@ const useStyles = makeStyles ((theme: Theme) => ({
         backgroundColor: green[300],
         color: "#F0F4Fb",
         minWidth: '100%',
-        height: '123px'
+        bottom: 0,
     },
     // searcher
     searchText:{
@@ -62,7 +62,6 @@ const useStyles = makeStyles ((theme: Theme) => ({
     filterIcon: {
         color: "#c6ff00",
     },
-    
     editIcon: {
         color: indigo[400],
     },

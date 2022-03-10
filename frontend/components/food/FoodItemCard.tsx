@@ -9,8 +9,8 @@ import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography'; 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'; 
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { TextField } from '@mui/material';
-import useStyles from '../styles/styles';
+import { TextField } from '@mui/material'; 
+import useStyles from '../../styles/styles';
 
 interface Food { 
   id: string,
