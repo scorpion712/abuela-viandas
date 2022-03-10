@@ -3,6 +3,7 @@ import React from 'react'
 import Layout from '../components/Layout'
 import useStyles from '../styles/styles';
 import FoodPage from './FoodPage';
+import MainPage from './MainPage';
 
 export default function HomePage() {
     const classes = useStyles();
@@ -34,6 +35,6 @@ export default function HomePage() {
     //       </div>
           
     //   </Layout>
-    <FoodPage /> 
+    <MainPage /> 
   )
 }

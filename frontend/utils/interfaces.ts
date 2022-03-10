@@ -16,3 +16,14 @@ export interface MenuHeadCell {
     numeric: boolean;
   }
   
+export interface Food {
+    id: string;
+    mainImage: string;
+    name: string;
+    description: string;
+    longDescriptionTitle?: string;
+    longDescription?: string;
+    price: number;
+    dayOfWeek: Date;
+  }
+  
