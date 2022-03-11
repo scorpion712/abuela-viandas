@@ -9,7 +9,6 @@ import styles from '../styles/Home.module.css';
 import FoodTable from '../components/GenericTable/GenericTable'; 
 import HomePage from './HomePage'; 
 import FoodPage from './FoodPage';
-import AppRoutes from '../routes/Routes'; 
  
 const Home: NextPage = () => {
   return (
@@ -23,7 +22,7 @@ const Home: NextPage = () => {
     //     <FoodTable />
     //   </div>
     // </Layout>
-    <HomePage />
+    <FoodPage/>
   );
 };
 

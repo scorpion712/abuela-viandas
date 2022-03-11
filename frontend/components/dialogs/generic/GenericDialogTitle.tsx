@@ -12,6 +12,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 export const GenericDialogTitle = (props: DialogTitleProps) => {
     const { children, onClose, ...other } = props;
   
+    
+
+
     return (
       <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
         {children}

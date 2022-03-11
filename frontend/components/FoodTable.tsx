@@ -11,16 +11,17 @@ import useStyles from "../styles/styles";
 
 interface FoodTableProps {
   search: string;
+  handleEditDrawer: (open: boolean) => void;
 }
 
 export default function FoodTable(props: FoodTableProps) {
-  const { search } = props;
+  const { search, handleEditDrawer } = props;
   const classes = useStyles();
 
   const [filter, setFilter] = React.useState("");
 
   const buttons = [
-    <IconButton color="primary" key="b1" onClick={() => console.log("clic")}>
+    <IconButton color="primary" key="b1" onClick={() => handleEditDrawer(true)}>
       <EditIcon className={classes.editIcon} />
     </IconButton>,
     <IconButton key="b2">

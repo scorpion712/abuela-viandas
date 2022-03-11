@@ -22,14 +22,14 @@ interface GenericDialogProps {
     open: boolean,
     handleClose: () => void,
     modalTitle: React.ReactNode,
-    contentChildren: JSX.Element, 
-    Transition: React.ForwardRefExoticComponent<TransitionProps & {
+    children: JSX.Element, 
+    Transition?: React.ForwardRefExoticComponent<TransitionProps & {
       children: React.ReactElement<any, any>;
   } & React.RefAttributes<unknown>>
 }
 
 export default function GenericDialog(props: GenericDialogProps) {
-    const {open, handleClose, modalTitle, contentChildren, Transition} = props;
+    const {open, handleClose, modalTitle, children, Transition} = props;
 
   return ( 
   <BootstrapDialog
@@ -42,7 +42,7 @@ export default function GenericDialog(props: GenericDialogProps) {
       {modalTitle}
     </GenericDialogTitle>
     <DialogContent dividers>
-      {contentChildren}
+      {children}
     </DialogContent>
     <DialogActions> 
       <Button autoFocus onClick={handleClose}>
