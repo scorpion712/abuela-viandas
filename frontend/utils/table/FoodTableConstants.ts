@@ -1,5 +1,5 @@
 
-import { Menu, MenuHeadCell } from '../interfaces';
+import { Menu, HeadCell } from '../interfaces';
 
 function createData(
     name: string,
@@ -107,7 +107,7 @@ export  const menues = [
     ),
   ];
   
-export const headCells: MenuHeadCell[] = [
+export const headCells: HeadCell[] = [
     {
       id: 'name',
       numeric: false,

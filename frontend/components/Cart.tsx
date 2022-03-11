@@ -14,7 +14,8 @@ import {
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import useStyles from "../styles/styles";
+import useStyles from "../styles/styles"; 
+import { useRouter } from "next/router";
 
 const cartItems = [
   {
@@ -44,6 +45,11 @@ interface CartProps {
 export default function Cart(props: CartProps) {
   const classes = useStyles();
   const { openCartDialog, toggleDrawer } = props;
+  const router = useRouter();
+
+  const handleCheckOut = () => {
+    router.push('/shipping');
+  }
 
   const cartItemsList = (anchor: any) => (
     <Box
@@ -134,7 +140,7 @@ export default function Cart(props: CartProps) {
       <Box
         className={classes.cartPurchaseButton}
       >
-        <Button variant="contained">
+        <Button variant="contained" onClick={handleCheckOut}>
           Comprar
         </Button>
       </Box>

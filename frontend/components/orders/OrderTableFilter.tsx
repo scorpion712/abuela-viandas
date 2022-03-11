@@ -13,10 +13,10 @@ import Typography from "@mui/material/Typography";
 import { blue } from "@mui/material/colors";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { Grid, Tooltip } from "@mui/material";
-import useStyles from "../styles/styles";
 
-const emails = ["Light", "Normal", "Vegano", "Limpiar"];
-const filterDialogTitle = "Seleccione un filtro"; 
+import useStyles from "../../styles/styles";
+ 
+const filterDialogTitle = "Seleccione una fecha para filtrar"; 
 
 export interface SimpleDialogProps {
   open: boolean;
@@ -39,7 +39,7 @@ function SimpleDialog(props: SimpleDialogProps) {
     <Dialog onClose={handleClose} open={open}>
       <DialogTitle>{filterDialogTitle}</DialogTitle>
       <List sx={{ pt: 0 }}>
-        {emails.map((email) => (
+        {/* {emails.map((email) => (
           <ListItem
             button
             onClick={() => handleListItemClick(email)}
@@ -52,13 +52,13 @@ function SimpleDialog(props: SimpleDialogProps) {
             </ListItemAvatar>
             <ListItemText primary={email} />
           </ListItem>
-        ))} 
+        ))}  */}
       </List>
     </Dialog>
   );
 }
 
-export default function FoodTableFilter(props: {
+export default function OrderTableFilter(props: {
   handleFilter?: (e: any) => void;
 }) {
   const [open, setOpen] = React.useState(false);

@@ -1,9 +1,11 @@
 import { Container, TextField } from '@mui/material';
 import { red } from '@mui/material/colors';
+
 import React, { useState } from 'react';
 import GenericDialog from '../components/dialogs/generic/GenericDialog';
 import EditForm from '../components/EditForm';
-import FoodTable from '../components/FoodTable';
+import FoodTable from '../components/food/FoodTable';
+
 
 import Layout from '../components/Layout';
 import useStyles from '../styles/styles';
@@ -23,11 +25,11 @@ export default function FoodPage(): JSX.Element {
   
   const [openEditDialog,setOpenEditDialog]= React.useState(false);
 
-  const handleOpenEditDialog =(open: boolean) => /*(event: any) => */{ 
-    setOpenEditDialog(open);
+  const handleOpenEditDialog =() => /*(event: any) => */{ 
+    setOpenEditDialog(!openEditDialog);
   };
   const handleCloseEditDialog = (close: boolean)=>{
-    setOpenEditDialog(close);
+    setOpenEditDialog(!openEditDialog);
   };
 
   return (

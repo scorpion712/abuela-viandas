@@ -1,16 +1,16 @@
 import { alpha, IconButton, Toolbar, Tooltip, Typography } from '@mui/material'; 
 import useStyles from '../../styles/styles';
 
-import { tableTitle } from '../../utils/constants';
-import FoodTableFilter from '../FoodTableFilter';
+import FoodTableFilter from '../food/FoodTableFilter';
 
 interface GenericTableToolbarProps {
-  handleFilter?: (e: any) => void;
+  children?: JSX.Element;
+  tableTitle: string
 }
 
 const GenericTableToolbar = (props: GenericTableToolbarProps) => { 
   const classes = useStyles();
-  const {handleFilter} = props;
+  const { children, tableTitle } = props;
 
   return (
     <Toolbar
@@ -28,7 +28,7 @@ const GenericTableToolbar = (props: GenericTableToolbarProps) => {
       >
         {tableTitle}
       </Typography> 
-      <FoodTableFilter handleFilter={handleFilter} />
+      {children}
     </Toolbar>
   );
 };
