@@ -25,7 +25,7 @@ const useStyles = makeStyles ((theme: Theme) => ({
         backgroundColor: green[300],
         color: "#F0F4Fb",
         minWidth: '100%',
-        height: '123px'
+        height: '1232px'
     },
     // searcher
     searchText:{

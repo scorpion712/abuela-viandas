@@ -12,9 +12,19 @@ import NextLink from "next/link";
 
 import Layout from "../components/Layout";
 import useStyles from "../styles/styles";
+import { haveAccount } from "../utils/constants";
+import GoogleLogin from "react-google-login";
 
 export default function Login() {
   const classes = useStyles();
+
+  handleFailure = (result) => {
+    alert(result);
+  }
+
+  const handleLogin = (googleData) => {
+    console.log(googleData);
+  }
 
   return (
     <Layout>
@@ -43,6 +53,17 @@ export default function Login() {
               />
             </ListItem>
             <ListItem>
+              <GoogleLogin
+                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                buttonText="Iniciar Sesión con Google"
+                onSucces={handleLogin}
+                onFailure={handleFailure}
+                cookiePolicy={'single_host_origin'}
+                >
+
+              </GoogleLogin>
+            </ListItem>
+            <ListItem>
               <Button
                 variant="contained"
                 type="submit"
@@ -53,7 +74,9 @@ export default function Login() {
               </Button>
             </ListItem>
             <ListItem style={{fontSize: '1.2rem'}}>
-              Don`t have an account? &nbsp;
+              <Typography gutterBottom variant="h6">
+                {haveAccount}
+              </Typography>
               <NextLink href="/register" passHref>
                 <Link style={{color: '#2e7d32', fontWeight: '500'}}>Register</Link>
               </NextLink>
