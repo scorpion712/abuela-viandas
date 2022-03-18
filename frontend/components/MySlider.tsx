@@ -55,7 +55,7 @@ export default function MySlider(props: MySliderProps) {
                     paddingTop: "3rem",
                     paddingBottom: "3rem",
                     backgroundColor: '#0f0f0f',
-                    height: '150px',
+                    height: '9rem',
                     color: '#ff6f00',
                     fontFamily: 'Roboto',
                     fontSize: "2rem",
