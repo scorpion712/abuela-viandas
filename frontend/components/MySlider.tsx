@@ -1,7 +1,7 @@
 import { ClassNames } from "@emotion/react";
 import React from "react";
 import Slider from "react-slick";
-import useStyles from "../styles/styles";
+import useStyles from "../hooks/useStyles";
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -55,7 +55,7 @@ export default function MySlider(props: MySliderProps) {
                     paddingTop: "3rem",
                     paddingBottom: "3rem",
                     backgroundColor: '#0f0f0f',
-                    height: '150px',
+                    height: '9rem',
                     color: '#ff6f00',
                     fontFamily: 'Roboto',
                     fontSize: "2rem",

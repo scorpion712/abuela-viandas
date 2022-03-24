@@ -25,7 +25,11 @@ const useStyles = makeStyles ((theme: Theme) => ({
         backgroundColor: green[300],
         color: "#F0F4Fb",
         minWidth: '100%',
+<<<<<<< HEAD:frontend/styles/styles.ts
         bottom: 0,
+=======
+        height: '1232px'
+>>>>>>> shopping-cart:frontend/hooks/useStyles.ts
     },
     // searcher
     searchText:{
@@ -94,8 +98,9 @@ const useStyles = makeStyles ((theme: Theme) => ({
     },
     cartButtonGroup: {
         display: "grid",
-        gridTemplateColumns: "1.5rem 1.5rem",
+        gridTemplateColumns: "2.4rem 2rem",
         marginLeft: "1rem",
+        alignItems:'space-between'
     }, 
     cartPurchaseButton : {
         display: "flex",

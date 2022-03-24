@@ -5,11 +5,20 @@ import React from "react";
 import GenericDialog from "../components/generics/GenericDialog";
 import FoodItemCard from "../components/food/FoodItemCard";
 import Layout from "../components/Layout";
+<<<<<<< HEAD:frontend/pages/main.tsx
 import MySlider from "../components/MySlider"; 
 import ItemViewContent from "../components/ItemViewContent";
 import { Food } from "../utils/interfaces";
 import ItemViewActions from "../components/ItemViewActions";
 import useStyles from "../styles/styles";
+=======
+import MySlider from "../components/MySlider";
+import useStyles from "../hooks/useStyles";
+import ItemViewContent from "../components/ItemViewContent";
+import { Food } from "../utils/interfaces";
+import ItemViewActions from "../components/ItemViewActions";
+import { CartProvider } from "../Cart/context/CartProvider";
+>>>>>>> shopping-cart:frontend/pages/home.tsx
 
 
 interface MenuItem {
@@ -38,7 +47,7 @@ const menuItems: MenuItem[] = [
         name: "Pollo Grillado con Arroz Blanco",
         description:
           "El arroz con pollo es un plato típico de América Latina y España con variaciones regionales. Consiste en arroz cocinado con pollo, en presas o desmechado, verduras y sazonado con especias",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Arroz blanco hervido en caldo de verduras. Pechuga de pollo grillada en parrilla a gas",
@@ -51,7 +60,7 @@ const menuItems: MenuItem[] = [
         name: "Pollo Grillado con Arroz Blanco",
         description:
           "El arroz con pollo es un plato típico de América Latina y España con variaciones regionales. Consiste en arroz cocinado con pollo, en presas o desmechado, verduras y sazonado con especias",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Arroz blanco hervido en caldo de verduras. Pechuga de pollo grillada en parrilla a gas",
@@ -64,7 +73,7 @@ const menuItems: MenuItem[] = [
         name: "Pollo Grillado con Arroz Blanco",
         description:
           "El arroz con pollo es un plato típico de América Latina y España con variaciones regionales. Consiste en arroz cocinado con pollo, en presas o desmechado, verduras y sazonado con especias",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Arroz blanco hervido en caldo de verduras. Pechuga de pollo grillada en parrilla a gas",
@@ -77,7 +86,7 @@ const menuItems: MenuItem[] = [
         name: "Pollo Grillado con Arroz Blanco",
         description:
           "El arroz con pollo es un plato típico de América Latina y España con variaciones regionales. Consiste en arroz cocinado con pollo, en presas o desmechado, verduras y sazonado con especias",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Arroz blanco hervido en caldo de verduras. Pechuga de pollo grillada en parrilla a gas",
@@ -90,7 +99,7 @@ const menuItems: MenuItem[] = [
         name: "Pollo Grillado con Arroz Blanco",
         description:
           "El arroz con pollo es un plato típico de América Latina y España con variaciones regionales. Consiste en arroz cocinado con pollo, en presas o desmechado, verduras y sazonado con especias",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Arroz blanco hervido en caldo de verduras. Pechuga de pollo grillada en parrilla a gas",
@@ -103,7 +112,7 @@ const menuItems: MenuItem[] = [
         name: "Pollo Grillado con Arroz Blanco",
         description:
           "El arroz con pollo es un plato típico de América Latina y España con variaciones regionales. Consiste en arroz cocinado con pollo, en presas o desmechado, verduras y sazonado con especias",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Arroz blanco hervido en caldo de verduras. Pechuga de pollo grillada en parrilla a gas",
@@ -115,72 +124,72 @@ const menuItems: MenuItem[] = [
     menuType: "Menu Tradicional",
     foodItem: [
       {
-        id: "adfgojkhk1",
+        id: "bdfgojkhk1",
         mainImage:
           "https://static-sevilla.abc.es/media/gurmesevilla/2012/01/comida-rapida-casera.jpg",
         name: "Hamburguesa Completa",
         description: "Medallon de carne con pan artesanal",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Medallon de carne condimentado, huevo, panceta, cebolla crispy, lechuga, tomate, pepino y aderezos caseros",
         dayOfWeek: new Date(),
       },
       {
-        id: "adfgojkhk2",
+        id: "bdfgojkhk2",
         mainImage:
           "https://static-sevilla.abc.es/media/gurmesevilla/2012/01/comida-rapida-casera.jpg",
         name: "Hamburguesa Completa",
         description: "Medallon de carne con pan artesanal",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Medallon de carne condimentado, huevo, panceta, cebolla crispy, lechuga, tomate, pepino y aderezos caseros",
         dayOfWeek: new Date(),
       },
       {
-        id: "adfgojkhk3",
+        id: "bdfgojkhk3",
         mainImage:
           "https://static-sevilla.abc.es/media/gurmesevilla/2012/01/comida-rapida-casera.jpg",
         name: "Hamburguesa Completa",
         description: "Medallon de carne con pan artesanal",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Medallon de carne condimentado, huevo, panceta, cebolla crispy, lechuga, tomate, pepino y aderezos caseros",
         dayOfWeek: new Date(),
       },
       {
-        id: "adfgojkhk4",
+        id: "bdfgojkhk4",
         mainImage:
           "https://static-sevilla.abc.es/media/gurmesevilla/2012/01/comida-rapida-casera.jpg",
         name: "Hamburguesa Completa",
         description: "Medallon de carne con pan artesanal",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Medallon de carne condimentado, huevo, panceta, cebolla crispy, lechuga, tomate, pepino y aderezos caseros",
         dayOfWeek: new Date(),
       },
       {
-        id: "adfgojkhk5",
+        id: "bdfgojkhk5",
         mainImage:
           "https://static-sevilla.abc.es/media/gurmesevilla/2012/01/comida-rapida-casera.jpg",
         name: "Hamburguesa Completa",
         description: "Medallon de carne con pan artesanal",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Medallon de carne condimentado, huevo, panceta, cebolla crispy, lechuga, tomate, pepino y aderezos caseros",
         dayOfWeek: new Date(),
       },
       {
-        id: "adfgojkhk6",
+        id: "bdfgojkhk6",
         mainImage:
           "https://static-sevilla.abc.es/media/gurmesevilla/2012/01/comida-rapida-casera.jpg",
         name: "Hamburguesa Completa",
         description: "Medallon de carne con pan artesanal",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Medallon de carne condimentado, huevo, panceta, cebolla crispy, lechuga, tomate, pepino y aderezos caseros",
@@ -192,72 +201,72 @@ const menuItems: MenuItem[] = [
     menuType: "Menu Ensaladas",
     foodItem: [
       {
-        id: "adfgojkhk1",
+        id: "cdfgojkhk1",
         mainImage:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlARqH325ti75lGiF1nKpiEmanaQjGwhhEb0-PROQhuMsJ4KzNMibFUbhIcMVPbAoZ6Ho&usqp=CAU",
         name: "Ensalada",
         description: "Ensalada mix de vegetales",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Lechuga, tomate cherry, palta, mix de semillas y opcional limón",
         dayOfWeek: new Date("Feb 28 2022"),
       },
       {
-        id: "adfgojkhk2",
+        id: "cdfgojkhk2",
         mainImage:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlARqH325ti75lGiF1nKpiEmanaQjGwhhEb0-PROQhuMsJ4KzNMibFUbhIcMVPbAoZ6Ho&usqp=CAU",
         name: "Ensalada",
         description: "Ensalada mix de vegetales",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Lechuga, tomate cherry, palta, mix de semillas y opcional limón",
         dayOfWeek: new Date("Mar 1 2022"),
       },
       {
-        id: "adfgojkhk3",
+        id: "cdfgojkhk3",
         mainImage:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlARqH325ti75lGiF1nKpiEmanaQjGwhhEb0-PROQhuMsJ4KzNMibFUbhIcMVPbAoZ6Ho&usqp=CAU",
         name: "Ensalada",
         description: "Ensalada mix de vegetales",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Lechuga, tomate cherry, palta, mix de semillas y opcional limón",
         dayOfWeek: new Date("Mar 2 2022"),
       },
       {
-        id: "adfgojkhk4",
+        id: "cdfgojkhk4",
         mainImage:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlARqH325ti75lGiF1nKpiEmanaQjGwhhEb0-PROQhuMsJ4KzNMibFUbhIcMVPbAoZ6Ho&usqp=CAU",
         name: "Ensalada",
         description: "Ensalada mix de vegetales",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Lechuga, tomate cherry, palta, mix de semillas y opcional limón",
         dayOfWeek: new Date("Mar 3 2022"),
       },
       {
-        id: "adfgojkhk5",
+        id: "cdfgojkhk5",
         mainImage:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlARqH325ti75lGiF1nKpiEmanaQjGwhhEb0-PROQhuMsJ4KzNMibFUbhIcMVPbAoZ6Ho&usqp=CAU",
         name: "Ensalada",
         description: "Ensalada mix de vegetales",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Lechuga, tomate cherry, palta, mix de semillas y opcional limón",
         dayOfWeek: new Date("Mar 4 2022"),
       },
       {
-        id: "adfgojkhk6",
+        id: "cdfgojkhk6",
         mainImage:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlARqH325ti75lGiF1nKpiEmanaQjGwhhEb0-PROQhuMsJ4KzNMibFUbhIcMVPbAoZ6Ho&usqp=CAU",
         name: "Ensalada",
         description: "Ensalada mix de vegetales",
-        price: 99999.99,
+        price: 9999.99,
         longDescriptionTitle: "Ingredientes",
         longDescription:
           "Lechuga, tomate cherry, palta, mix de semillas y opcional limón",
@@ -289,7 +298,7 @@ export default function Main() {
 
   return (
     <Layout>
-      <>
+      <CartProvider>
         <Container style={{ marginBottom: "1rem" }}>
           <MySlider imageIndex={imageIndex} handleChange={handleChange} />
         </Container>
@@ -323,7 +332,7 @@ export default function Main() {
         >
           <ItemViewContent selectedItem={selectedItem} />
         </GenericDialog>
-      </>
+      </CartProvider>
     </Layout>
   ); 
 }

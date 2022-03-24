@@ -3,8 +3,8 @@ import { red } from '@mui/material/colors';
 import React from 'react'; 
 import FoodTable from '../components/food/FoodTable';
 
-import Layout from '../components/Layout';
-import useStyles from '../styles/styles';
+import Layout from '../components/Layout'; 
+import useStyles from '../hooks/useStyles';
 
 export default function FoodPage(): JSX.Element {
 
