@@ -1,7 +1,7 @@
 import { ClassNames } from "@emotion/react";
 import React from "react";
 import Slider from "react-slick";
-import useStyles from "../styles/styles";
+import useStyles from "../hooks/useStyles";
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

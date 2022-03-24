@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import { CardActions, IconButton, TextField, Typography } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-import useStyles from "../styles/styles";
+import useStyles from "../hooks/useStyles";
 
 export default function ItemViewActions() {
   const classes = useStyles();

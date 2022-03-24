@@ -11,7 +11,7 @@ import React from "react";
 import NextLink from "next/link";
 
 import Layout from "../components/Layout";
-import useStyles from "../styles/styles";
+import useStyles from "../hooks/useStyles";
 import { haveAccount } from "../utils/constants";
 import GoogleLogin from "react-google-login";
 import { useState } from "react";

@@ -10,7 +10,7 @@ import { Menu } from '../../utils/interfaces';
 import GenericTableHead from './GenericTableHead';
 import GenericTableBody from './GenericTableBody';
 import { Order } from '../../utils/Comparator';
-import useStyles from '../../styles/styles';
+import useStyles from '../../hooks/useStyles';
 
 
 interface GenericTableProps {

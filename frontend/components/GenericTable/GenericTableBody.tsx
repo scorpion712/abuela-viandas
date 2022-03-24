@@ -3,7 +3,7 @@ import { TableBody, TableCell, TableRow } from '@mui/material';
 import { getComparator, Order } from '../../utils/Comparator';
 import { stableSort } from '../../utils/sorter';
 import { Menu } from '../../utils/interfaces';
-import useStyles from '../../styles/styles';
+import useStyles from '../../hooks/useStyles';
  
 interface GenericTableBodyProps {
     page: number,

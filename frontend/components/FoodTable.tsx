@@ -7,7 +7,7 @@ import GenericTable from "./GenericTable/GenericTable";
 import { menues } from "../utils/table/FoodTableConstants";
 import { headCells } from "../utils/table/FoodTableConstants";
 import { Menu } from "../utils/interfaces";
-import useStyles from "../styles/styles";
+import useStyles from "../hooks/useStyles";
 
 interface FoodTableProps {
   search: string;

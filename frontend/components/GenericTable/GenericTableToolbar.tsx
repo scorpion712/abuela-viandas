@@ -1,5 +1,5 @@
 import { alpha, IconButton, Toolbar, Tooltip, Typography } from '@mui/material'; 
-import useStyles from '../../styles/styles';
+import useStyles from '../../hooks/useStyles';
 
 import { tableTitle } from '../../utils/constants';
 import FoodTableFilter from '../FoodTableFilter';

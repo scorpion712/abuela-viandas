@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import { blue } from "@mui/material/colors";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { Grid, Tooltip } from "@mui/material";
-import useStyles from "../styles/styles";
+import useStyles from "../hooks/useStyles";
 
 const emails = ["Light", "Normal", "Vegano", "Limpiar"];
 const filterDialogTitle = "Seleccione un filtro"; 

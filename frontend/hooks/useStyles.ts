@@ -95,8 +95,9 @@ const useStyles = makeStyles ((theme: Theme) => ({
     },
     cartButtonGroup: {
         display: "grid",
-        gridTemplateColumns: "1.5rem 1.5rem",
+        gridTemplateColumns: "2.4rem 2rem",
         marginLeft: "1rem",
+        alignItems:'space-between'
     }, 
     cartPurchaseButton : {
         display: "flex",

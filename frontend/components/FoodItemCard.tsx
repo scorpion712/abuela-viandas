@@ -10,7 +10,8 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'; 
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { TextField } from '@mui/material';
-import useStyles from '../styles/styles';
+import useStyles from '../hooks/useStyles';
+import { useCart } from '../Cart/hooks/useCart';
 
 interface Food { 
   id: string,
@@ -46,7 +47,7 @@ interface FoodItemCardProps {
 export default function FoodItemCard(props: FoodItemCardProps) {
   const { item, handleCardClick } = props;  
   const [expanded, setExpanded] = React.useState(false);
-  const [productQty, setQuantity] = React.useState<Number>(1);
+  const [productQty, setQuantity] = React.useState<number>(1);
 
   const classes = useStyles();
   
@@ -55,7 +56,7 @@ export default function FoodItemCard(props: FoodItemCardProps) {
   };
 
   const handleQtyChange = (e : React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-    const value: Number = Number(e.target.value);
+    const value: number = parseInt(e.target.value);
     if (value >= 1 && value <= 999) {
       setQuantity(value);
     } else {
@@ -63,8 +64,22 @@ export default function FoodItemCard(props: FoodItemCardProps) {
     }
   } 
 
-  const handleAddToCart = (item: Food, productQty: Number) => {
-    console.log({...item, "productQty": productQty});
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (item: Food, productQty: number) => { 
+    addToCart({
+      itemId: item.id,
+      item: {
+        id: item.id,
+        name: item.name,
+        description: item.description,
+        unitPrice: item.price,
+        image: item.mainImage
+      },
+      itemQty: productQty,
+      note: '',
+      subTotal: item.price * productQty
+    });
   }
 
   return (
