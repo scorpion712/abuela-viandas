@@ -194,7 +194,21 @@ const useStyles = makeStyles ((theme: Theme) => ({
     loginForm: { 
         maxWidth: '800px',
         margin: '0 auto',
-    }
+    },
+
+    //edit form
+    editFormImg:{
+        marginLeft: '1rem',
+        marginRight: '1rem',
+     
+    },
+    buttonsEdit:{
+        display: 'flex',
+        justifyContent: 'space-around',
+        marginTop: '1rem',
+        alignItems: 'center',
+        WebkitJustifyContent: 'center',
+    },
 }));
 
 export default useStyles;

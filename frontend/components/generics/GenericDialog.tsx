@@ -2,10 +2,13 @@ import React from "react";
 import Dialog from "@mui/material/Dialog";
 import { styled } from "@mui/material/styles";
 import DialogContent from "@mui/material/DialogContent";
-import { GenericDialogTitle } from "./GenericDialogTitle";
+
 import { TransitionProps } from "@mui/material/transitions";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import { GenericDialogTitle } from "./GenericDialogTitle";
+import { Box } from "@mui/material";
+import { display } from "@mui/system";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -37,7 +40,7 @@ export default function GenericDialog(props: GenericDialogProps) {
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <BootstrapDialog
-    fullScreen={fullScreen}
+      maxWidth='lg'
       TransitionComponent={Transition}
       onClose={handleClose}
       aria-labelledby="customized-dialog-title"
@@ -46,8 +49,11 @@ export default function GenericDialog(props: GenericDialogProps) {
       <GenericDialogTitle id="customized-dialog-title" onClose={handleClose}>
         {modalTitle}
       </GenericDialogTitle>
-      <DialogContent dividers>{children}</DialogContent>
+      <DialogContent dividers >{children}</DialogContent>
+    <Box sx={{ display:'flex',justifyContent: "space-around",alignItems:'flex-end'}} >
+
       {dialogActions}
+      </Box>
     </BootstrapDialog>
   );
 }
