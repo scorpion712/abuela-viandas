@@ -21,6 +21,7 @@ import FoodTableFilter from "./FoodTableFilter";
 
 interface FoodTableProps {
   search: string;
+  handleEditDrawer: ()=>void
 }
 
 export default function FoodTable(props: FoodTableProps) {
@@ -30,7 +31,7 @@ export default function FoodTable(props: FoodTableProps) {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [filter, setFilter] = React.useState("");
 
-  const { search } = props; 
+  const { search, handleEditDrawer } = props; 
   const classes = useStyles();
 
   const handleRequestSort = (
@@ -63,15 +64,21 @@ export default function FoodTable(props: FoodTableProps) {
       : true)
   );
 
+  const deleteMenu = ()=>{
+
+    
+  }
+
+
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - foodRows.length) : 0;
 
   const buttons = [
-    <IconButton color="primary" key="b1" onClick={() => console.log("clic")}>
+    <IconButton color="primary" key="b1" onClick={handleEditDrawer}>
       <EditIcon className={classes.editIcon} />
     </IconButton>,
-    <IconButton key="b2">
+    <IconButton key="b2" onClick={deleteMenu}>
       <DeleteIcon className={classes.deleteIcon} />
     </IconButton>,
   ];

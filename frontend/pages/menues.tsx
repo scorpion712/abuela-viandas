@@ -1,11 +1,11 @@
-import { Container, TextField } from '@mui/material';
-import { red } from '@mui/material/colors';
+import { Button, Container, IconButton, TextField } from '@mui/material';
+import { green, red } from '@mui/material/colors';
 
 import React, { useState } from 'react';
-import GenericDialog from '../components/dialogs/generic/GenericDialog';
 import EditForm from '../components/EditForm';
 import FoodTable from '../components/food/FoodTable';
-
+import GenericDialog from '../components/generics/GenericDialog';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 import Layout from '../components/Layout';
 import useStyles from '../styles/styles';
@@ -28,7 +28,7 @@ export default function FoodPage(): JSX.Element {
   const handleOpenEditDialog =() => /*(event: any) => */{ 
     setOpenEditDialog(!openEditDialog);
   };
-  const handleCloseEditDialog = (close: boolean)=>{
+  const handleCloseEditDialog = ()=>{
     setOpenEditDialog(!openEditDialog);
   };
 
@@ -44,7 +44,17 @@ export default function FoodPage(): JSX.Element {
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => handleSearchChange(e)}
         />
         <FoodTable search={search} handleEditDrawer={handleOpenEditDialog} />
-        <GenericDialog open={openEditDialog} modalTitle={editTitle } handleClose={()=> setOpenEditDialog(false)} >
+        <GenericDialog open={openEditDialog} 
+          modalTitle={editTitle } 
+          handleClose={handleCloseEditDialog} 
+          dialogActions={
+            <div >
+              <IconButton size='large'>
+
+                <CheckCircleIcon  sx={{ color: green[500] }} />
+              </IconButton>
+            </div>
+          }>
           <EditForm/>
         </GenericDialog>
       </Container>
