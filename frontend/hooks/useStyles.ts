@@ -25,11 +25,8 @@ const useStyles = makeStyles ((theme: Theme) => ({
         backgroundColor: green[300],
         color: "#F0F4Fb",
         minWidth: '100%',
-<<<<<<< HEAD:frontend/styles/styles.ts
         bottom: 0,
-=======
-        height: '1232px'
->>>>>>> shopping-cart:frontend/hooks/useStyles.ts
+        height: '123px'
     },
     // searcher
     searchText:{
@@ -194,6 +191,21 @@ const useStyles = makeStyles ((theme: Theme) => ({
         fontFamily:"Roboto",
         fontSize: "1.2rem",
         fontWeight: "bold",
+    },
+    orderNote: {
+        width: '100%',
+        maxWidth: "100%", 
+        fontFamily: "Roboto",
+        fontSize: "1rem",
+        position: "relative",
+        background: "#ffa",
+        overflow: 'hidden',
+        paddingTop: '1rem',
+        paddingLeft: '2rem',
+        paddingRight: '1rem',
+        paddingBottom: '.5rem',
+        borderRadius: '0 0 0 30px/45px', 
+        // change border color on focus
     },
     // login
     loginForm: { 

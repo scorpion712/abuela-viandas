@@ -5,20 +5,12 @@ import React from "react";
 import GenericDialog from "../components/generics/GenericDialog";
 import FoodItemCard from "../components/food/FoodItemCard";
 import Layout from "../components/Layout";
-<<<<<<< HEAD:frontend/pages/main.tsx
-import MySlider from "../components/MySlider"; 
-import ItemViewContent from "../components/ItemViewContent";
-import { Food } from "../utils/interfaces";
-import ItemViewActions from "../components/ItemViewActions";
-import useStyles from "../styles/styles";
-=======
 import MySlider from "../components/MySlider";
 import useStyles from "../hooks/useStyles";
 import ItemViewContent from "../components/ItemViewContent";
 import { Food } from "../utils/interfaces";
 import ItemViewActions from "../components/ItemViewActions";
 import { CartProvider } from "../Cart/context/CartProvider";
->>>>>>> shopping-cart:frontend/pages/home.tsx
 
 
 interface MenuItem {

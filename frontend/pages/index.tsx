@@ -1,12 +1,5 @@
 import type { NextPage } from "next";
-<<<<<<< HEAD
-
 import Main from "./main";
-
-const Home: NextPage = () => {
-  return <Main />;
-=======
-import MainPage from "./home";
 import { Auth0Provider } from "@auth0/auth0-react";
 
 const Home: NextPage = () => {
@@ -15,10 +8,9 @@ const Home: NextPage = () => {
       domain="" 
       clientId="" 
       redirectUri="">
-      <MainPage />
+      <Main />
     </Auth0Provider>
   );
->>>>>>> shopping-cart
 };
 
 export default Home;

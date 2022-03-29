@@ -2,14 +2,9 @@ import React from 'react';
 import { TableBody, TableCell, TableRow } from '@mui/material'; 
 
 import { stableSort } from '../../utils/sorter';
-<<<<<<< HEAD:frontend/components/food/FoodTableBody.tsx
-import { getComparator, OrderType } from '../../utils/Comparator';
-import useStyles from '../../styles/styles';
-import { Menu } from '../../utils/interfaces';
-=======
 import { Menu } from '../../utils/interfaces';
 import useStyles from '../../hooks/useStyles';
->>>>>>> shopping-cart:frontend/components/GenericTable/GenericTableBody.tsx
+import { getComparator, OrderType } from '../../utils/Comparator';
  
 interface FoodTableBodyProps {
     page: number,
