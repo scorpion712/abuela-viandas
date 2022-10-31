@@ -1,16 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import { CardActions, IconButton, TextField, Typography } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import useStyles from "../hooks/useStyles";
+import { Food } from "../utils/interfaces";
 
-export default function ItemViewActions() {
+export default function ItemViewActions(props: { item: Food, note: string }) {
   const classes = useStyles();
+  const { item, note: anote } = props;
+  const [ note, setNote ] = useState<string>(anote);
+
+  const handleNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    setNote(e.target.value); 
+  } 
 
   return (
     <DialogActions style={{ marginRight: "2rem" }}>
+      <TextField
+            variant="standard"
+            multiline
+            maxRows={4}
+            InputProps={{
+              disableUnderline: true,
+            }}
+            className={classes.orderNote}
+            aria-label="maximum height"
+            placeholder="Escriba una nota para su pedido"
+            value={note}
+            style={{marginRight: '1rem', minWidth: '15rem', maxWidth: '15rem'}}
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => handleNoteChange(e)}
+          />
       <Typography
         gutterBottom
         style={{
@@ -24,7 +45,7 @@ export default function ItemViewActions() {
           fontFamily: "Roboto",
         }}
       >
-        ${"99999.99"}
+        ${item.price}
       </Typography>
       <TextField
         id="filled-number"
@@ -42,7 +63,7 @@ export default function ItemViewActions() {
       <IconButton
         aria-label="add to cart"
         size="large"
-        onClick={() => console.log("handle save n close")}
+        onClick={() => console.log("handle save n close", item)}
       >
         <AddShoppingCartIcon color="success" />
       </IconButton>

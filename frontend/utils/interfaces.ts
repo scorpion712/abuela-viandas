@@ -24,6 +24,7 @@ export interface Food {
     longDescription?: string;
     price: number;
     dayOfWeek: Date;
+    note?: string;
   }
   
 export interface Customer {

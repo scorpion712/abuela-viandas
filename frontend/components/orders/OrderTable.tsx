@@ -4,18 +4,16 @@ import Table from "@mui/material/Table";
 import TableContainer from "@mui/material/TableContainer";
 import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
-import { IconButton } from "@mui/material";
-import FindInPageIcon from '@mui/icons-material/FindInPage';
-import CancelIcon from '@mui/icons-material/Cancel';
 
 import GenericTableToolbar from "../generics/GenericTableToolbar";
 import GenericTableHead from "../generics/GenericTableHead";
 import { OrderType } from "../../utils/Comparator";
-import useStyles from "../../styles/styles";
+import OrderTableFilter from "./OrderTableFilter";
 import OrderTableBody from "./OrderTableBody";
 import { orders } from "../../utils/table/OrderTableConstants";
 import { headCells } from "../../utils/table/OrderTableConstants";
 import { orderTableTitle } from "../../utils/constants";
+import useStyles from "../../hooks/useStyles";
 
 interface OrderTableProps {
   search: string;
@@ -32,7 +30,14 @@ export default function OrderTable(props: OrderTableProps) {
 
   const { search } = props;
 
-  const ordersRows = orders.filter(() => true);
+  const ordersRows =
+    search.length > 0
+      ? orders.filter(
+          (order) =>
+            order.customer.toLowerCase().includes(search) ||
+            order.id.toLowerCase().includes(search)
+        )
+      : orders;
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
@@ -62,21 +67,12 @@ export default function OrderTable(props: OrderTableProps) {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - ordersRows.length) : 0;
 
-  const buttons = [
-    <IconButton color="primary" key="b1" onClick={() => console.log("clic")}>
-      <FindInPageIcon className={classes.editIcon} />
-    </IconButton>,
-    <IconButton key="b2">
-      <CancelIcon className={classes.deleteIcon} />
-    </IconButton>,
-  ];
-
   return (
     <Box sx={{ width: "100%" }}>
       <Paper sx={{ width: "100%", mb: 2 }}>
         <GenericTableToolbar tableTitle={orderTableTitle}>
-            <div>ACA VA FILTRO DATE PICKER</div>
-        </GenericTableToolbar> 
+          <OrderTableFilter />
+        </GenericTableToolbar>
         <TableContainer style={{ paddingLeft: "1.5rem" }}>
           <Table aria-labelledby="tableTitle" size="medium">
             <GenericTableHead
@@ -96,7 +92,6 @@ export default function OrderTable(props: OrderTableProps) {
               rowsPerPage={rowsPerPage}
               order={order}
               orderBy={orderBy}
-              buttons={buttons}
             />
           </Table>
         </TableContainer>

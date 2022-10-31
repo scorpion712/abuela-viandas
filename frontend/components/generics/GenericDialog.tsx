@@ -35,6 +35,7 @@ export default function GenericDialog(props: GenericDialogProps) {
     const theme = useTheme();
 
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <BootstrapDialog
     fullScreen={fullScreen}

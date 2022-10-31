@@ -1,9 +1,9 @@
 import { Theme } from "@mui/material";
-import { amber, green, indigo, orange, purple, red } from "@mui/material/colors";
+import { amber, green, grey, indigo, orange, purple, red } from "@mui/material/colors";
 import { makeStyles } from "@mui/styles";
- 
 
-const useStyles = makeStyles ((theme: Theme) => ({
+
+const useStyles = makeStyles((theme: Theme) => ({
     // layout
     navbar: {
         backgroundColor: green[400],
@@ -19,7 +19,7 @@ const useStyles = makeStyles ((theme: Theme) => ({
     },
     main: {
         minHeight: '80vh'
-    }, 
+    },
     footer: {
         textAlign: 'center',
         backgroundColor: green[300],
@@ -29,56 +29,56 @@ const useStyles = makeStyles ((theme: Theme) => ({
         height: '123px'
     },
     // searcher
-    searchText:{
+    searchText: {
         marginTop: '.5rem',
         marginBottom: '.5rem'
     },
     // table
-    toolTipFilter:{
-        padding:0,
+    toolTipFilter: {
+        padding: 0,
     },
     tableToolBar: {
         backgroundColor: green[300],
         color: "#FFF"
-    }, 
-    tableFoot: { 
+    },
+    tableFoot: {
         backgroundColor: green[200],
         fontSize: '1rem',
         // inherits
-        '& p':{
+        '& p': {
             fontSize: '1rem',
         },
-        '& div': { 
+        '& div': {
             fontSize: '1rem',
         }
     },
-    tableHead:{
+    tableHead: {
         fontSize: '1.3rem',
-        fontWeight:'900',
+        fontWeight: '900',
     },
-    tableBody:{
-        fontSize: '1.2rem', 
+    tableBody: {
+        fontSize: '1.2rem',
     },
     // icons
     filterIcon: {
-        color: "#c6ff00",
+        color: "#ff520c",
     },
     editIcon: {
         color: indigo[400],
     },
-    genericTable:{
+    genericTable: {
         marginLeft: "1.6rem"
     },
     deleteIcon: {
         color: red[400]
     },
-    gridWeekDay: { 
-        border: 'solid', 
-        borderColor: '#000', 
+    gridWeekDay: {
+        border: 'solid',
+        borderColor: '#000',
         display: 'flex',
         alignContent: 'center',
-        alignItems: 'center', 
-        padding: '1rem', 
+        alignItems: 'center',
+        padding: '1rem',
         justifyContent: 'center'
     },
     // cart
@@ -87,7 +87,7 @@ const useStyles = makeStyles ((theme: Theme) => ({
         alignItems: "center",
         alignContent: "center",
     },
-    cartItemsList: { 
+    cartItemsList: {
         display: "flex",
     },
     cartItemListText: {
@@ -97,14 +97,14 @@ const useStyles = makeStyles ((theme: Theme) => ({
         display: "grid",
         gridTemplateColumns: "2.4rem 2rem",
         marginLeft: "1rem",
-        alignItems:'space-between'
-    }, 
-    cartPurchaseButton : {
+        alignItems: 'space-between'
+    },
+    cartPurchaseButton: {
         display: "flex",
         textAlign: "center",
         alignItems: "center",
         justifyContent: "center",
-        '& Button': { 
+        '& Button': {
             backgroundColor: orange[600],
             color: "#0A0A0A",
             fontWeight: 'bold',
@@ -122,7 +122,7 @@ const useStyles = makeStyles ((theme: Theme) => ({
         color: red[900],
     },
     // carousel
-    slide: { 
+    slide: {
         padding: 0,
         margin: 0,
         cursor: 'pointer',
@@ -134,9 +134,9 @@ const useStyles = makeStyles ((theme: Theme) => ({
         alignItems: "center",
         textAlign: "center",
         display: "grid",
-        marginTop: '1rem',  
+        marginTop: '1rem',
     },
-    activeSlide: { 
+    activeSlide: {
         alignContent: "center",
         alignSelf: "center",
         alignItems: "center",
@@ -145,7 +145,7 @@ const useStyles = makeStyles ((theme: Theme) => ({
         opacity: 1
     },
     // week day
-    weekDay: { 
+    weekDay: {
         alignContent: "center",
         alignSelf: "center",
         textAlign: "center",
@@ -158,14 +158,14 @@ const useStyles = makeStyles ((theme: Theme) => ({
         fontSize: '3rem'
     },
     // cards
-    qtyInput: { 
+    qtyInput: {
         minWidth: '4.7rem',
         marginTop: '.7rem',
         '& input': {
             paddingTop: '1rem',
             paddingBottom: '.6rem',
             paddingLeft: '0',
-            paddingRight: '.3rem',  
+            paddingRight: '.3rem',
             marginLeft: '0',
             textAlign: 'end',
             letterSpacing: '1px',
@@ -175,7 +175,7 @@ const useStyles = makeStyles ((theme: Theme) => ({
     },
     cardTitle: {
         fontWeight: '420'
-     },
+    },
     cardProductPrice: {
         marginLeft: '.3rem',
         marginTop: ".1rem",
@@ -188,13 +188,13 @@ const useStyles = makeStyles ((theme: Theme) => ({
     },
     cardDescriptionTitle: {
         textAlign: 'center',
-        fontFamily:"Roboto",
+        fontFamily: "Roboto",
         fontSize: "1.2rem",
         fontWeight: "bold",
     },
     orderNote: {
         width: '100%',
-        maxWidth: "100%", 
+        maxWidth: "100%",
         fontFamily: "Roboto",
         fontSize: "1rem",
         position: "relative",
@@ -204,14 +204,41 @@ const useStyles = makeStyles ((theme: Theme) => ({
         paddingLeft: '2rem',
         paddingRight: '1rem',
         paddingBottom: '.5rem',
-        borderRadius: '0 0 0 30px/45px', 
+        borderRadius: '0 0 0 30px/45px',
         // change border color on focus
     },
     // login
-    loginForm: { 
+    loginForm: {
         maxWidth: '800px',
         margin: '0 auto',
-    }
+    },
+    // banner 
+    mainFeaturedPost: {
+        position: 'relative',
+        //backgroundColor: grey[800],
+        //color: theme.palette.common.white,
+        // marginBottom: theme.spacing(4),
+        backgroundImage: 'url(https://source.unsplash.com/random)',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+    },
+    overlay: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        right: 0,
+        left: 0,
+        backgroundColor: 'rgba(0,0,0,.3)',
+    },
+    mainFeaturedPostContent: {
+        position: 'relative',
+        // padding: theme.spacing(3),
+        // [theme.breakpoints.up('md')]: {
+        //     padding: theme.spacing(6),
+        //     paddingRight: 0,
+        // },
+    },
 }));
 
 export default useStyles;

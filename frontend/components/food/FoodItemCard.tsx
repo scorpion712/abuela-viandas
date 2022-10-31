@@ -9,20 +9,15 @@ import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { TextField } from "@mui/material";
+import { CardHeader, TextField } from "@mui/material";
 import useStyles from "../../hooks/useStyles";
 import { useCart } from "../../Cart/hooks/useCart";
 import { useState } from "react";
-
-interface Food {
-  id: string;
-  mainImage: string;
-  name: string;
-  description: string;
-  longDescriptionTitle?: string;
-  longDescription?: string;
-  price: number;
-}
+import GenericDialog from "../generics/GenericDialog";
+import ItemViewActions from "../ItemViewActions";
+import ItemViewContent from "../ItemViewContent";
+import { Food } from "../../utils/interfaces";
+import { green } from "@mui/material/colors";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -41,13 +36,24 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 
 interface FoodItemCardProps {
   item: Food;
-  handleCardClick: (item: Food) => void;
+  day: string;
 }
 
 export default function FoodItemCard(props: FoodItemCardProps) {
-  const { item, handleCardClick } = props;
+  const { item, day } = props;
   const [expanded, setExpanded] = React.useState(false);
   const [productQty, setQuantity] = React.useState<number>(1);
+  const [openView, setOpenView] = React.useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = React.useState<Food>(item);
+
+  const handleCloseView = () => {
+    setOpenView(false);
+  };
+
+  const handleOpenView = (item: Food) => {
+    setOpenView(true);
+    setSelectedItem(item);
+  };
 
   const classes = useStyles();
 
@@ -86,9 +92,12 @@ export default function FoodItemCard(props: FoodItemCardProps) {
 
   const [note, setNote] = useState<string>("");
 
-  const handleNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+  const handleNoteChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     setNote(e.target.value);
-  };
+    setSelectedItem({...selectedItem, note: e.target.value}) 
+  }; 
 
   const CardBody = () => {
     return (
@@ -148,37 +157,65 @@ export default function FoodItemCard(props: FoodItemCardProps) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }} style={{ cursor: "pointer" }}>
+    <>
+      <Card sx={{ maxWidth: 345 }} style={{ cursor: "pointer" }}>
+        <CardHeader
+          title={day}
+          subheader={item.price % 2 == 0 ? 'solo hoy' : ''}
+          titleTypographyProps={{ align: 'center', variant:'h4' }}
+          subheaderTypographyProps={{
+            align: 'center',
+          }}
+          sx={{
+            backgroundColor: (theme) =>
+              theme.palette.mode === 'light'
+                ? green[300]
+                : theme.palette.success.light,
+            color: '#171717',
+          }}
+        />
       <CardMedia
-        component="img"
-        height="194"
-        image={item.mainImage}
-        alt="Image Not Found"
-        onClick={() => handleCardClick(item)}
-      />
-      <CardContent onClick={() => handleCardClick(item)}>
-        <CardBody />
-      </CardContent>
-      <CardActions disableSpacing>
-        <CardActionsBar />
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+          component="img"
+          height="194"
+          image={item.mainImage}
+          alt="Image Not Found"
+          onClick={() => handleOpenView(item)}
+        />
+        {/* <CardContent onClick={() => handleOpenView(item)}> */}
         <CardContent>
-          <TextField
-            variant="standard"
-            multiline
-            maxRows={4}
-            InputProps={{
-              disableUnderline: true,
-            }}
-            className={classes.orderNote}
-            aria-label="maximum height"
-            placeholder="Escriba una nota para su pedido"
-            value={note}
-            onChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => handleNoteChange(e)}
-          />
+          <CardBody />
         </CardContent>
-      </Collapse>
-    </Card>
+        <CardActions disableSpacing>
+          <CardActionsBar />
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <TextField
+              variant="standard"
+              multiline
+              maxRows={4}
+              InputProps={{
+                disableUnderline: true,
+              }}
+              className={classes.orderNote}
+              aria-label="maximum height"
+              placeholder="Escriba una nota para su pedido"
+              value={note}
+              onChange={(
+                e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+              ) => handleNoteChange(e)}
+            />
+          </CardContent>
+        </Collapse>
+      </Card>
+      <GenericDialog
+        open={openView}
+        handleClose={handleCloseView}
+        modalTitle={selectedItem?.name}
+        dialogActions={<ItemViewActions item={selectedItem} note={note}/>}
+      >
+        <ItemViewContent selectedItem={selectedItem} />
+      </GenericDialog>
+    </>
   );
 }

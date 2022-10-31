@@ -1,59 +1,131 @@
 import * as React from "react";
 import IconButton from "@mui/material/Button";
-import Avatar from "@mui/material/Avatar";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemText from "@mui/material/ListItemText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
-import PersonIcon from "@mui/icons-material/Person";
-import AddIcon from "@mui/icons-material/Add";
 import Typography from "@mui/material/Typography";
-import { blue } from "@mui/material/colors";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import { Grid, Tooltip } from "@mui/material";
+import {
+  Grid,
+  List,
+  ListItem,
+  Paper,
+  Slider,
+  Stack,
+  TextField,
+  Tooltip,
+} from "@mui/material";
 
 import useStyles from "../../hooks/useStyles";
- 
- 
-const filterDialogTitle = "Seleccione una fecha para filtrar"; 
+import { Box } from "@mui/system";
+
+const filterDialogTitle = "Seleccione una fecha para filtrar";
 
 export interface SimpleDialogProps {
-  open: boolean;
-  selectedValue: string;
-  onClose: (value: string) => void;
+  open: boolean; 
+  onClose: (initDate?: Date, endDate?: Date, maxTotal?: number | number[]) => void;
 }
 
 function SimpleDialog(props: SimpleDialogProps) {
-  const { onClose, selectedValue, open } = props;
+  const { onClose, open } = props;
 
-  const handleClose = () => {
-    onClose(selectedValue);
-  };
+  const [initDate, setInitDate ] = React.useState<Date>(new Date());
+  const [endDate, setEndDate ] = React.useState<Date>(new Date());
+  const [maxTotal, setMaxTotal] = React.useState<number | number[]>(80);
 
-  const handleListItemClick = (value: string) => {
-    onClose(value);
-  };
+  const handleClose = () => { 
+    onClose(initDate, endDate, maxTotal);
+  }; 
+
+
+  // get max total from orders and divide into 4
+  const marks = [
+    {
+      value: 0,
+      label: "$0",
+    },
+    {
+      value: 20,
+      label: "$20",
+    },
+    {
+      value: 37,
+      label: "$37",
+    },
+    {
+      value: 100,
+      label: "$100",
+    },
+  ];
+
+  function valuetext(value: number) {
+    return `$${value}`;
+  }
+
+
+  // useEffect: 
+  // - fetch from api orders from today
+  // - cuando cierro dialog de filtros [open]
+
+  const handleInitDate =  (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setInitDate(new Date(e.target.value));
+  }
+  const handleEndDate =  (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setEndDate(new Date(e.target.value));
+  }
+ 
+  const handleSliderChange = (e: any, value: number | number []) => {
+    setMaxTotal(value);
+  }
 
   return (
     <Dialog onClose={handleClose} open={open}>
       <DialogTitle>{filterDialogTitle}</DialogTitle>
-      <List sx={{ pt: 0 }}>
-        {/* {emails.map((email) => (
-          <ListItem
-            button
-            onClick={() => handleListItemClick(email)}
-            key={email}
-          >
-            <ListItemAvatar>
-              <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
-                <PersonIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={email} />
-          </ListItem>
-        ))}  */}
+      <List>
+        <ListItem>
+          <TextField
+            color="success"
+            id="start_date"
+            label="Inicio"
+            type="date"
+            defaultValue="2017-05-24"
+            sx={{ width: 220 }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={ (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => handleInitDate(e)}
+          />
+        </ListItem>
+        <ListItem>
+          <TextField
+            color="success"
+            id="end_date"
+            label="Fin"
+            type="date"
+            defaultValue="2017-05-24"
+            sx={{ width: 220 }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={ (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => handleEndDate(e)}
+          />
+        </ListItem>
+        <ListItem>
+          <Typography gutterBottom variant="h6">
+            Seleccione un rango para el total
+          </Typography>
+        </ListItem>
+        <ListItem>
+          <Slider
+            aria-label="Always visible"
+            defaultValue={80}
+            getAriaValueText={valuetext}
+            step={10}
+            value={maxTotal}
+            marks={marks}
+            valueLabelDisplay="on"
+            onChange={(e, value) => handleSliderChange(e, value) }
+          />
+        </ListItem>
       </List>
     </Dialog>
   );
@@ -71,10 +143,11 @@ export default function OrderTableFilter(props: {
     setOpen(true);
   };
 
-  const handleClose = (value: string) => {
+  const handleClose = (initDate?: Date, endDate?: Date, maxTotal?: number | number[]) => {
+    console.log(initDate, endDate, maxTotal)
     setOpen(false);
-    setSelectedValue(value);
-    handleFilter ? handleFilter(value) : true;
+    //setSelectedValue(initDate?.toLocaleDateString('es-ES'));
+    //handleFilter ? handleFilter(value) : true;
   };
 
   return (
@@ -82,22 +155,32 @@ export default function OrderTableFilter(props: {
       <Grid container spacing={3}>
         <Grid item xs={10}>
           {selectedValue.length > 0 && (
-            <Typography variant="subtitle1" component="text" 
-            style={{borderRadius: "1rem", padding: '.5rem', paddingLeft: '1rem', paddingRight: '1rem', fontSize: '1.1rem', fontWeight:"500", backgroundColor:"#F49839", color: "#FAFAFA"}}>
-                {selectedValue}
+            <Typography
+              variant="subtitle1"
+              component="text"
+              style={{
+                borderRadius: "1rem",
+                padding: ".5rem",
+                paddingLeft: "1rem",
+                paddingRight: "1rem",
+                fontSize: "1.1rem",
+                fontWeight: "500",
+                backgroundColor: "#F49839",
+                color: "#FAFAFA",
+              }}
+            >
+              {selectedValue}
             </Typography>
           )}
         </Grid>
         <Grid item xs={1}>
           <div>
-            <IconButton
-             onClick={handleClickOpen}>
+            <IconButton onClick={handleClickOpen}>
               <FilterListIcon className={classes.filterIcon} />
             </IconButton>
-            <SimpleDialog
-              selectedValue={selectedValue}
+            <SimpleDialog 
               open={open}
-              onClose={handleClose}
+              onClose={() => handleClose()}
             />
           </div>
         </Grid>

@@ -7,11 +7,16 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useCart } from "../Cart/hooks/useCart";
 import { useToggle } from "../hooks/useToggle";
 import Cart from "../Cart/Cart";
+import router from "next/router";
 
 export const AppBarIcons = () => {
     const { open: openCartDialog, toggleOpen: toggleDrawer } = useToggle();
     const { cartItems } = useCart();
     const { loginWithRedirect } = useAuth0();
+
+  const handleLoginClick = () => {
+    router.push("/login");
+  }
 
   return (
     <Box sx={{ display: { xs: "none", md: "flex" } }}>
@@ -33,10 +38,10 @@ export const AppBarIcons = () => {
         aria-label="account of current user"
         //aria-controls={menuId}
         aria-haspopup="true"
-        onClick={() => loginWithRedirect()}
+        onClick={handleLoginClick}
         color="inherit"
-      >
-        <AccountCircle />
+      > 
+        <AccountCircle /> 
       </IconButton>
       {/* </Link>
             </NextLink> */}

@@ -12,12 +12,12 @@ import GenericTableToolbar from "../generics/GenericTableToolbar";
 import { Menu } from "../../utils/interfaces";
 import GenericTableHead from "../generics/GenericTableHead";
 import { OrderType } from "../../utils/Comparator";
-import useStyles from "../../styles/styles";
 import FoodTableBody from "./FoodTableBody";
 import { menues } from "../../utils/table/FoodTableConstants";
 import { headCells } from "../../utils/table/FoodTableConstants";
 import { foodTableTitle } from "../../utils/constants";
 import FoodTableFilter from "./FoodTableFilter";
+import useStyles from "../../hooks/useStyles";
 
 interface FoodTableProps {
   search: string;
@@ -28,9 +28,9 @@ export default function FoodTable(props: FoodTableProps) {
   const [orderBy, setOrderBy] = React.useState<string>("price");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [filter, setFilter] = React.useState("");
+  const [categoryFilters, setCategoryFilters] = React.useState<string[]>([]);
 
-  const { search } = props; 
+  const { search } = props;
   const classes = useStyles();
 
   const handleRequestSort = (
@@ -51,16 +51,28 @@ export default function FoodTable(props: FoodTableProps) {
   ) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
-  }; 
+  };
 
   const handleFilter = (value: string) => {
-    setFilter(value.toLocaleLowerCase());
-  };  
+    value !== "" &&
+      !categoryFilters.includes(value.toLowerCase()) &&
+      setCategoryFilters([...categoryFilters, value.toLowerCase()]);
+  };
 
-  const foodRows = menues.filter(({ name, category }: Menu) => 
-    name.toLowerCase().includes(search) && (filter.length>0
-      ? category.toLowerCase() === filter
-      : true)
+  const handleRemoveFilter = (value: string) => {
+    setCategoryFilters(categoryFilters.filter(f => f !== value.toLowerCase()));
+  }
+
+  const handleCleanFilters = () => { 
+    setCategoryFilters([]);
+  }
+
+  const foodRows = menues.filter(
+    ({ name, category }: Menu) =>
+      name.toLowerCase().includes(search) &&
+      (categoryFilters.length > 0
+        ? categoryFilters.includes(category.toLowerCase())
+        : true)
   );
 
   // Avoid a layout jump when reaching the last page with empty rows.
@@ -68,7 +80,11 @@ export default function FoodTable(props: FoodTableProps) {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - foodRows.length) : 0;
 
   const buttons = [
-    <IconButton color="primary" key="b1" onClick={() => console.log("clic")}>
+    <IconButton
+      color="primary"
+      key="b1"
+      onClick={() => console.log("clic edit")}
+    >
       <EditIcon className={classes.editIcon} />
     </IconButton>,
     <IconButton key="b2">
@@ -80,8 +96,12 @@ export default function FoodTable(props: FoodTableProps) {
     <Box sx={{ width: "100%" }}>
       <Paper sx={{ width: "100%", mb: 2 }}>
         <GenericTableToolbar tableTitle={foodTableTitle}>
-          <FoodTableFilter handleFilter={handleFilter} />
-          </GenericTableToolbar>
+          <FoodTableFilter
+            handleAddFilter={handleFilter}
+            handleRemoveFilter={handleRemoveFilter}
+            handleCleanFilters={handleCleanFilters}
+          />
+        </GenericTableToolbar>
         <TableContainer style={{ paddingLeft: "1.5rem" }}>
           <Table aria-labelledby="tableTitle" size="medium">
             <GenericTableHead
