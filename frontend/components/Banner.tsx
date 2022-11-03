@@ -18,8 +18,7 @@ export default function Banner() {
 
   return (
     <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${post.image})`, marginBottom: '1rem', marginTop: '.2rem' }}>
-      {/* Increase the priority of the hero background image */}
-      {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
+      {<img style={{ display: 'none' }} src={post.image} alt={post.imgText} />}
       <div className={classes.overlay} />
       <Grid container>
         <Grid item md={6}>
