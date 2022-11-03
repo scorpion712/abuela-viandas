@@ -6,27 +6,30 @@ import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles((theme: Theme) => ({
     // layout
     navbar: {
-        backgroundColor: green[400],
+        backgroundColor: '#25a05a',
         '& a': {
             color: green[300],
             marginLeft: '2rem',
         },
     },
     title: {
-        fontSize: '1.5rem',
+        fontSize: '2rem',
         fontWeight: "bold",
-        color: "#F0F4Fb"
+        color: "#F0F4Fb",
+        marginBottom: 0 
     },
-    main: {
-        minHeight: '80vh'
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        flexGrow: '1'
+    },
+    main: { 
     },
     footer: {
         textAlign: 'center',
-        backgroundColor: green[300],
-        color: "#F0F4Fb",
-        minWidth: '100%',
-        bottom: 0,
-        height: '123px'
+        backgroundColor: green[300],  
+        marginTop: 'auto',
     },
     // searcher
     searchText: {

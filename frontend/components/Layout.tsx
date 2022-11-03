@@ -2,7 +2,11 @@ import * as React from "react";
 import {
   AppBar, 
   Box, 
+  Container, 
+  createTheme, 
+  Grid, 
   Link,
+  ThemeProvider,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -15,6 +19,22 @@ import Cart from "../Cart/Cart";
 import { CartProvider } from "../Cart/context/CartProvider";
 import { useToggle } from "../hooks/useToggle";
 import { AppBarIcons } from "./AppBarIcons";
+import { Footer } from "./Footer";
+ 
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#25a05a',
+    },
+    info: {
+      main: "#fc5c5c",
+    },
+    secondary: {
+      main: '#F0A049'
+    }
+  },
+});
 
 export default function Layout(props: { children: JSX.Element }) {
   const classes = useStyles();
@@ -23,7 +43,8 @@ export default function Layout(props: { children: JSX.Element }) {
   const { children } = props;
 
   return (
-    <div>
+  <ThemeProvider theme={theme}>
+    <div className={classes.root}>
       <Head>
         <title>{appTitle}</title>
         <meta
@@ -39,7 +60,7 @@ export default function Layout(props: { children: JSX.Element }) {
         <AppBar position="static" className={classes.navbar}>
           <Toolbar>
             <NextLink href="/" passHref>
-              <Link>
+              <Link style={{textDecoration: 'none'}}>
                 <Typography gutterBottom className={classes.title}>
                   {appTitle}
                 </Typography>
@@ -51,9 +72,8 @@ export default function Layout(props: { children: JSX.Element }) {
         </AppBar>
         {children}
       </CartProvider>
-      <footer className={classes.footer}>
-        <Typography>Copyrights</Typography>
-      </footer>
+      <Footer />
     </div>
+  </ThemeProvider>
   );
 }

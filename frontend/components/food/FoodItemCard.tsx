@@ -150,7 +150,7 @@ export default function FoodItemCard(props: FoodItemCardProps) {
           aria-expanded={expanded}
           aria-label="show more"
         >
-          <ExpandMoreIcon color="info" />
+          <ExpandMoreIcon color="info"/>
         </ExpandMore>
       </>
     );
@@ -169,9 +169,9 @@ export default function FoodItemCard(props: FoodItemCardProps) {
           sx={{
             backgroundColor: (theme) =>
               theme.palette.mode === 'light'
-                ? green[300]
+                ? "#25a05a"
                 : theme.palette.success.light,
-            color: '#171717',
+            color: '#FAFAFA',
           }}
         />
       <CardMedia

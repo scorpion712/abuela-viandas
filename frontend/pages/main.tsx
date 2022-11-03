@@ -40,27 +40,6 @@ export default function Main() {
           <Banner />
           <CarouselMenu imageIndex={imageIndex} handleChange={handleChange} />
           <CarouselDay imageIndex={imageIndex} />
-          {/*         <Grid style={{ margin: "1rem" }}>
-<Grid container spacing={3}>
-            {menuItems[imageIndex]?.foodItem.map(
-              (foodItem: Food) =>
-                foodItem && (
-                  <Grid item md={6} lg={2} key={foodItem.id}>
-                    <Box className={classes.weekDay}>
-                      <Typography className={classes.weekDayTitle}>
-                        {daysOfWeek[foodItem.dayOfWeek.getDay()] +
-                          " " +
-                          foodItem.dayOfWeek.getDate()}
-                      </Typography>
-                    </Box>
-                    <FoodItemCard
-                      item={foodItem}
-                    />
-                  </Grid>
-                )
-            )}
-        </Grid>
-          </Grid> */}
         </Container>
       </CartProvider>
     </Layout>
