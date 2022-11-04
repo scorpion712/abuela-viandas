@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonGroup } from "@mui/material";
+import { Button, ButtonGroup, Grid } from "@mui/material";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
@@ -18,26 +18,12 @@ export const CartItemControlButton = (props: CartItemControlBtnProps) => {
   const { addOneToCart, deleteFromCart, removeFromCart } = useCart();
 
   return (
-    <ButtonGroup
-      orientation="vertical"
-      aria-label="vertical contained button group"
-      variant="outlined"
-      size="small"
-      className={classes.cartButtonGroup}
-    >
-      <Button variant="text" onClick={() => addOneToCart(productId)}>
-        <AddCircleOutlineIcon className={classes.addCircleIcon} />
-      </Button>
-      <Button variant="text" onClick={() => deleteFromCart(productId)}>
-        <RemoveCircleOutlineIcon
-          className={classes.removeCircleIcon}
-        ></RemoveCircleOutlineIcon>
-      </Button>
-      <Button variant="text" onClick={() => removeFromCart(productId)}>
-        <DeleteForeverIcon
-          className={classes.deleteCircleIcon}
-        ></DeleteForeverIcon>
-      </Button>
-    </ButtonGroup>
+    <Grid >
+      <Grid item xs={12}>
+       <AddCircleOutlineIcon className={classes.addCircleIcon} onClick={() => addOneToCart(productId)}/>
+       <RemoveCircleOutlineIcon className={classes.removeCircleIcon} onClick={() => deleteFromCart(productId)}/>
+       <DeleteForeverIcon className={classes.deleteCircleIcon} onClick={() => removeFromCart(productId)}/>
+      </Grid>
+    </Grid> 
   );
 };

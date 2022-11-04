@@ -12,7 +12,7 @@ export default function CartCheckout() {
 
   return (
     <Box className={classes.cartPurchaseButton}>
-      <Button variant="contained" onClick={handleCheckOut}>
+      <Button variant="contained" onClick={handleCheckOut} color="secondary" style={{fontSize:'1.3rem', fontWeight: "600", color: "#2b2626", paddingLeft: '2rem', paddingRight: '2rem'}}>
         Comprar
       </Button>
     </Box>

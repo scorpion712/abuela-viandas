@@ -11,7 +11,7 @@ export default function Banner() {
     title: 'This could be a title',
     description:
       "Multiple lines of text that form the slogan or same information about how to do a purchase.",
-    image: 'https://source.unsplash.com/random',
+    image: 'https://http2.mlstatic.com/D_NQ_NP_907895-MLA52183869643_102022-OO.jpg',
     imgText: 'main image description',
     linkText: 'Continue reading…',
   };
@@ -22,7 +22,7 @@ export default function Banner() {
       <div className={classes.overlay} />
       <Grid container>
         <Grid item md={6}>
-          <div className={classes.mainFeaturedPostContent}>
+          <div className={classes.mainFeaturedPostContent} style={{opacity: '0'}}>
             <Typography component="h1" variant="h3" color="inherit" gutterBottom>
               {post.title}
             </Typography>

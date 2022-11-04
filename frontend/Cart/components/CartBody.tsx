@@ -1,6 +1,11 @@
 import React from "react";
-import { Box, Button, Divider } from "@mui/material";
- 
+import {
+  Box,
+  Container,
+  Divider,
+  Typography,
+} from "@mui/material";
+
 import CartCheckout from "./CartCheckout";
 import { CartProvider } from "../context/CartProvider";
 import { CartTitle } from "./CartTitle";
@@ -16,22 +21,23 @@ interface CartBodyProps {
 export const CartBody = (props: CartBodyProps) => {
   const { anchor, toggleDrawer } = props;
 
+  const { cartItems } = useCart();
   return (
     // <CartProvider>
-      <Box
-        sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 550 }}
-        role="presentation"  
-      >
-        <CartTitle />
-        <Divider />
-        <CartItemsList />
-        <Divider />
-        <br />
-        <CartTotal />
-        <Divider />
-        <br />
-        <CartCheckout />
-      </Box>
+    <Box
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 550 }}
+      role="presentation"
+    >
+      <CartTitle />
+      <Divider />
+      <CartItemsList />
+      <Divider />
+      <br />
+      <CartTotal />
+      <Divider />
+      <br />
+      <CartCheckout />
+    </Box>
     // </CartProvider>
   );
 };

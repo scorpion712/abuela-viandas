@@ -86,9 +86,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     // cart
     cartTitle: {
-        marginLeft: "3rem",
+        display: "flex",
+        justifyContent: 'center',
         alignItems: "center",
         alignContent: "center",
+        marginTop:'1rem'
     },
     cartItemsList: {
         display: "flex",
@@ -106,23 +108,32 @@ const useStyles = makeStyles((theme: Theme) => ({
         display: "flex",
         textAlign: "center",
         alignItems: "center",
-        justifyContent: "center",
-        '& Button': {
-            backgroundColor: orange[600],
-            color: "#0A0A0A",
-            fontWeight: 'bold',
-            fontSize: '1.3rem',
-        }
+        justifyContent: "center"
     },
     // cart item icons
     addCircleIcon: {
         color: green[700],
+        '&:hover': {
+            cursor: 'pointer',
+            backgroundColor: green[50],
+            borderRadius: '22px'
+        }
     },
     removeCircleIcon: {
         color: red[600],
+        '&:hover': {
+            cursor: 'pointer',
+            backgroundColor: red[50],
+            borderRadius: '22px'
+        }
     },
     deleteCircleIcon: {
         color: red[900],
+        '&:hover': {
+            cursor: 'pointer',
+            backgroundColor: red[100],
+            borderRadius: '22px'
+        }
     },
     // carousel
     slide: {
@@ -242,6 +253,23 @@ const useStyles = makeStyles((theme: Theme) => ({
         //     paddingRight: 0,
         // },
     },
+    // footer links 
+    footerLink: {
+        color: '#000',
+        '&:hover': {
+            color: '#ff3600',
+            cursor: 'pointer'
+        }
+    },
+    // popUpMessage
+    popUpMessage: {
+        backgroundColor: "#ff3600",
+        color: "#FAFAFA",
+        fontSize: "1.1rem",
+        fontWeight: "normal", 
+        borderRadius: '22px',
+        opacity: '.93'
+      }
 }));
 
 export default useStyles;
