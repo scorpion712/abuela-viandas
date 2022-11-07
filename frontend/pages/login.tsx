@@ -4,7 +4,7 @@ import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Layout from "../components/Layout";
-import { LoginComponent } from "../login/components/LoginComponent";
+import { LoginComponent } from "../login/components/LoginComponent";  
 
 function Copyright(props: any) {
   return (
@@ -31,7 +31,7 @@ export default function Login() {
         <CssBaseline /> 
         <LoginComponent />
         <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
+      </Container> 
     </Layout>
   );
 }

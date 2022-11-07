@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -14,15 +14,18 @@ import {
   authFacebook,
   authFirebase,
   authGoogle,
-} from "../services/login.service";
+} from "../../contexts/login/login.service";
+import LoginContext from "../../contexts/login/login.context";
+import { createAddaptedAuth } from "../adapters/login.addapter";
 
 export const LoginComponent = () => {
-  const [authWay, setAuthWay] = useState("");
+  const [authWay, setAuthWay] = useState(""); // selected authentication way
+
+  const {loading, isLogged, dispatch} = useContext(LoginContext);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log(authWay)
+    const data = new FormData(event.currentTarget);  
     switch (authWay) {
       case "facebook":
         authFacebook(dispatch, data);
@@ -41,6 +44,8 @@ export const LoginComponent = () => {
   ) => {
     setAuthWay(event.currentTarget.name);
   };
+ 
+  console.log(`Loading: ${loading}, isLogged: ${isLogged}`)
 
   return (
     <Box
