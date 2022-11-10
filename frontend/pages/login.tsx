@@ -4,7 +4,7 @@ import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Layout from "../components/Layout";
-import { LoginComponent } from "../login/components/LoginComponent";  
+import { LoginComponent } from "../components/registration/components/LoginComponent";  
 
 function Copyright(props: any) {
   return (

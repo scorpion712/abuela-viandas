@@ -269,7 +269,30 @@ const useStyles = makeStyles((theme: Theme) => ({
         fontWeight: "normal", 
         borderRadius: '22px',
         opacity: '.93'
-      }
+    },
+    // registration links 
+    loginLink: {
+        '&:hover': {
+            color: '#ff3600',
+            cursor: 'pointer'
+        }
+    },
+    googleButton: {
+        backgroundColor: "#DB4437", 
+        color: "#FFF",
+        '&:hover': {
+            backgroundColor: "#db5237",
+            cursor: 'pointer'
+        }
+    },
+    facebookButton: {
+        backgroundColor: "#3b5998", 
+        color: "#FFF",
+        '&:hover': {
+            backgroundColor: "#3b4a98",
+            cursor: 'pointer'
+        }
+    }
 }));
 
 export default useStyles;

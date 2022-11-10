@@ -1,4 +1,4 @@
-import { createAddaptedAuth } from "../../login/adapters/login.addapter";
+import { createAddaptedAuth } from "../../components/registration/adapters/login.addapter";
 import { IAuthData } from "../../models/Auth";
 import { LOGIN_ERROR, LOGIN_REQUEST, LOGIN_SUCCESS } from "../../utils/constants";
 
@@ -7,12 +7,11 @@ export const authFirebase =  async (dispatch: any, data: FormData) => {
         type: LOGIN_REQUEST,
     });
     try {
-        console.log(`validate addapted ${data} on firebase auth`);
+        console.log(`validate addapted ${data} on firebase auth and set response`);
         const addaptedData = createAddaptedAuth(data);
         // simulate response waiting for 1 second
         const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-        await sleep(1000);
-        console.log(addaptedData);
+        await sleep(1000); 
         if (addaptedData.email != 'test' && addaptedData.password != 'testing') {
             return dispatch({
                 type: LOGIN_ERROR,
@@ -30,6 +29,7 @@ export const authFirebase =  async (dispatch: any, data: FormData) => {
         })
     }
 }
+
 export const authGoogle =  async (dispatch: any, data: FormData) => {
     dispatch({
         type: LOGIN_REQUEST,

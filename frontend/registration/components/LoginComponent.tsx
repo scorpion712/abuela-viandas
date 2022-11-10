@@ -9,33 +9,48 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import { Link, Typography } from "@mui/material";
+import { Alert, Link, Slide, Snackbar, Typography } from "@mui/material";
+
 import {
   authFacebook,
   authFirebase,
   authGoogle,
-} from "../../contexts/login/login.service";
-import LoginContext from "../../contexts/login/login.context";
-import { createAddaptedAuth } from "../adapters/login.addapter";
+} from "../../../contexts/login/login.service";
+import LoginContext from "../../../contexts/login/login.context";
+import useStyles from "../../../hooks/useStyles"; 
+
+function TransitionLeft(props: any) {
+  return <Slide {...props} direction="left" />;
+}
 
 export const LoginComponent = () => {
   const [authWay, setAuthWay] = useState(""); // selected authentication way
+  const [remember, setRemember] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [open, setOpen] = React.useState(false);
 
-  const {loading, isLogged, dispatch} = useContext(LoginContext);
+  const classes = useStyles();
+
+  const { loading, isLogged, dispatch } = useContext(LoginContext);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);  
-    switch (authWay) {
-      case "facebook":
-        authFacebook(dispatch, data);
-        break;
-      case "google":
-        authGoogle(dispatch, data);
-        break;
-      default:
-        authFirebase(dispatch, data);
-        break;
+    const data = new FormData(event.currentTarget);
+    if (!data.get("password") || !data.get("email")) {
+      setErrorMessage("Usuario o contraseña inválidos.");
+      setOpen(true);
+    } else {
+      switch (authWay) {
+        case "facebook":
+          authFacebook(dispatch, data);
+          break;
+        case "google":
+          authGoogle(dispatch, data);
+          break;
+        default:
+          authFirebase(dispatch, data);
+          break;
+      }
     }
   };
 
@@ -44,8 +59,14 @@ export const LoginComponent = () => {
   ) => {
     setAuthWay(event.currentTarget.name);
   };
- 
-  console.log(`Loading: ${loading}, isLogged: ${isLogged}`)
+
+  const handleRemember = () => {
+    setRemember(!remember);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <Box
@@ -84,7 +105,14 @@ export const LoginComponent = () => {
           autoComplete="current-password"
         />
         <FormControlLabel
-          control={<Checkbox value="remember" color="primary" />}
+          control={
+            <Checkbox
+              value="remember"
+              color="primary"
+              onClick={handleRemember}
+            />
+          }
+          onClick={handleRemember}
           label="Recordarme"
         />
         <Button
@@ -103,7 +131,7 @@ export const LoginComponent = () => {
           fullWidth
           variant="outlined"
           sx={{ mt: 2, mb: 2 }}
-          style={{ backgroundColor: "#DB4437", color: "#FFF" }}
+          className={classes.googleButton}
           startIcon={<GoogleIcon style={{ color: "#FFF" }} />}
           onClick={(e) => handleLogin(e)}
         >
@@ -115,7 +143,7 @@ export const LoginComponent = () => {
           fullWidth
           variant="contained"
           sx={{ mb: 2 }}
-          style={{ backgroundColor: "#3b5998" }}
+          className={classes.facebookButton}
           startIcon={<FacebookIcon />}
           onClick={(e) => handleLogin(e)}
         >
@@ -123,17 +151,29 @@ export const LoginComponent = () => {
         </Button>
         <Grid container>
           <Grid item xs>
-            <Link href="#" variant="body2">
+            <Link href="#" variant="body2" className={classes.loginLink}>
               Olvidó su contraseña?
             </Link>
           </Grid>
           <Grid item>
-            <Link href="signup" variant="body2">
+            <Link href="signup" variant="body2" className={classes.loginLink}>
               {"Aún no tiene cuenta? Registrese"}
             </Link>
           </Grid>
         </Grid>
       </Box>
+      {errorMessage && (
+        <Snackbar
+          open={open}
+          onClose={handleClose}
+          TransitionComponent={TransitionLeft}
+          key={"transition ? transition.name : "}
+        >
+          <Alert severity="warning" className={classes.popUpMessage}>
+            {errorMessage}
+          </Alert>
+        </Snackbar>
+      )}
     </Box>
   );
 };

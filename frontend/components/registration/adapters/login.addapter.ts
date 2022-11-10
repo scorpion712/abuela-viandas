@@ -1,4 +1,4 @@
-import { IAuthData } from "../../models/Auth";
+import { IAuthData } from "../../../models/Auth";
 
 export const createAddaptedAuth = (data: FormData)=> { 
     const formattedData: IAuthData = { 
