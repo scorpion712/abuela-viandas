@@ -21,6 +21,7 @@ import { useToggle } from "../hooks/useToggle";
 import { AppBarIcons } from "./AppBarIcons";
 import { Footer } from "./Footer";
 import LoginState from "../contexts/login/login.state";
+import { useRouter } from "next/router";
 
 const theme = createTheme({
   palette: {
@@ -41,6 +42,8 @@ export default function Layout(props: { children: JSX.Element }) {
   const { open: openCartDialog, toggleOpen: toggleDrawer } = useToggle();
 
   const { children } = props;
+
+  const router = useRouter();
 
   return (
     <ThemeProvider theme={theme}>
@@ -68,12 +71,12 @@ export default function Layout(props: { children: JSX.Element }) {
                   </Link>
                 </NextLink>
                 <Box sx={{ flexGrow: 1 }} />
-                <AppBarIcons />
+                { !router.pathname.includes('login') && !router.pathname.includes('signup') && <AppBarIcons />}
               </Toolbar>
             </AppBar>
             {children}
           </CartProvider>
-          <Footer />
+          { !router.pathname.includes('login') && !router.pathname.includes('signup') && <Footer />}
         </div>
       </LoginState>
     </ThemeProvider>
