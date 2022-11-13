@@ -37,7 +37,7 @@ export const LoginComponent = () => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     if (!data.get("password") || !data.get("email")) {
-      setErrorMessage("Usuario o contraseña inválidos.");
+      setErrorMessage("Por favor, complete los cambios.");
       setOpen(true);
     } else {
       switch (authWay) {
