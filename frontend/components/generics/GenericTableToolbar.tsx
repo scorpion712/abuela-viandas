@@ -1,5 +1,5 @@
 import { alpha, IconButton, Toolbar, Tooltip, Typography } from '@mui/material'; 
-import useStyles from '../../styles/styles';
+import useStyles from '../../hooks/useStyles';
 
 import FoodTableFilter from '../food/FoodTableFilter';
 
@@ -21,7 +21,7 @@ const GenericTableToolbar = (props: GenericTableToolbarProps) => {
       }}
     >
       <Typography
-        sx={{ flex: '0 50%', fontSize: '1.76rem' }}
+        sx={{ flex: '0 50%', fontSize: '2rem' }}
         variant="h6"
         id="tableTitle"
         component="div"

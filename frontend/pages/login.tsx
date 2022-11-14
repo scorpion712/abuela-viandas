@@ -1,66 +1,37 @@
-import {
-  Button,
-  Container,
-  Link,
-  List,
-  ListItem,
-  TextField,
-  Typography,
-} from "@mui/material"; 
-import React from "react";
-import NextLink from "next/link";
-
+import * as React from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
 import Layout from "../components/Layout";
-import useStyles from "../styles/styles";
+import { LoginComponent } from "../components/registration/components/LoginComponent";  
+
+function Copyright(props: any) {
+  return (
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://mui.com/">
+        La Abuela Viandas
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
 
 export default function Login() {
-  const classes = useStyles();
-
   return (
     <Layout>
-      <Container className={classes.main}>
-        <form className={classes.loginForm}>
-          <Typography component="h2" variant="h2">
-            Login
-          </Typography>
-          <List>
-            <ListItem>
-              <TextField
-                variant="outlined"
-                fullWidth
-                id="email"
-                label="Email"
-                inputProps={{ type: "email" }}
-              />
-            </ListItem>
-            <ListItem>
-              <TextField
-                variant="outlined"
-                fullWidth
-                id="password"
-                label="Password"
-                inputProps={{ type: "password" }}
-              />
-            </ListItem>
-            <ListItem>
-              <Button
-                variant="contained"
-                type="submit"
-                fullWidth
-                color="success"
-              >
-                Login
-              </Button>
-            </ListItem>
-            <ListItem style={{fontSize: '1.2rem'}}>
-              Don`t have an account? &nbsp;
-              <NextLink href="/register" passHref>
-                <Link style={{color: '#2e7d32', fontWeight: '500'}}>Register</Link>
-              </NextLink>
-            </ListItem>
-          </List>
-        </form>
-      </Container>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline /> 
+        <LoginComponent />
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container> 
     </Layout>
   );
 }

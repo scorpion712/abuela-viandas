@@ -6,7 +6,7 @@ import {
   TableSortLabel,
 } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
-import useStyles from '../../styles/styles';
+import useStyles from '../../hooks/useStyles';
 
 import { Menu, HeadCell } from '../../utils/interfaces';
 
