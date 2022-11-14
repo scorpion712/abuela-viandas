@@ -17,7 +17,7 @@ export default function ItemViewActions(props: { item: Food, note: string }) {
   } 
 
   return (
-    <DialogActions style={{ marginRight: "2rem" }}>
+    <DialogActions  >
       <TextField
             variant="standard"
             multiline
@@ -29,7 +29,7 @@ export default function ItemViewActions(props: { item: Food, note: string }) {
             aria-label="maximum height"
             placeholder="Escriba una nota para su pedido"
             value={note}
-            style={{marginRight: '1rem', minWidth: '15rem', maxWidth: '15rem'}}
+            style={{marginRight: '1rem', minWidth: '17rem', maxWidth: '17rem'}}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => handleNoteChange(e)}
           />
       <Typography

@@ -2,6 +2,7 @@ import React from "react";
 import {
   Box,
   ButtonGroup,
+  Grid,
   List,
   ListItem,
 } from "@mui/material";
@@ -16,16 +17,18 @@ export const CartItemsList = () => {
   const classes = useStyles();
   const { cartItems } = useCart();  
   return (
-    <List>
+    <>
       {cartItems.map((item: CartItem) => (
         // eslint-disable-next-line react/jsx-key
-        <Box key={item.itemId}>
-          <ListItem className={classes.cartItemsList} key={item.itemId}>
-            <CartItemComponent product={item} />
-            <CartItemControlButton productId={item.item.id}/>
-          </ListItem>
+        <Box key={item.itemId} sx={{mb: 2, ml: 1, mt: 1}}> 
+          {/* <ListItem className={classes.cartItemsList} key={item.itemId}> */}
+            <Grid container >
+              <CartItemComponent product={item} />
+              <CartItemControlButton productId={item.item.id}/>
+            </Grid>  
+          {/* </ListItem> */} 
         </Box>
       ))}
-    </List>
+    </>
   );
 };
