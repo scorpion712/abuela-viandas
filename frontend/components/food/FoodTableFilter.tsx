@@ -91,7 +91,7 @@ export default function FoodTableFilter(props: {
     setOpen(true);
   };
 
-  const handleClose = (value: string) => {
+  const handleClose = (value: string): void => {
     setOpen(false);
     if (value && !filters.some((v) => v.toLowerCase() == value.toLowerCase())) {
       setFilters([...filters, value.toLowerCase()]);

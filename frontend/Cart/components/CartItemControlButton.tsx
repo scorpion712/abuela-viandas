@@ -18,7 +18,7 @@ export const CartItemControlButton = (props: CartItemControlBtnProps) => {
   const { addOneToCart, deleteFromCart, removeFromCart } = useCart();
 
   return (
-    <Grid >
+    <Grid container xs={2}>
       <Grid item xs={12}>
        <AddCircleOutlineIcon className={classes.addCircleIcon} onClick={() => addOneToCart(productId)}/>
        <RemoveCircleOutlineIcon className={classes.removeCircleIcon} onClick={() => deleteFromCart(productId)}/>
