@@ -23,12 +23,10 @@ export default function ItemViewContent(props: ItemViewContentProps) {
       />
       <Typography
         gutterBottom
-        variant="h5"
+        variant="h6"
         style={{
           marginTop: "1rem",
           marginBottom: "0",
-          fontSize: "1.7rem",
-          fontFamily: "Roboto",
         }}
       >
         {selectedItem?.description}
